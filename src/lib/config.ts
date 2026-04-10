@@ -5,10 +5,10 @@ export const config = {
   brand: "Evenmia",
   brandShort: "EVENMIA",
   tagline: "Votre organisatrice d'evenements sur-mesure",
-  city: "Saint-Omer",
+  city: "Arras",
   region: "Hauts-de-France",
   department: "Pas-de-Calais",
-  postalCode: "62500",
+  postalCode: "62000",
 
   // Contact
   phone: process.env.NEXT_PUBLIC_PHONE || "06 00 00 00 00",
@@ -22,7 +22,7 @@ export const config = {
   freeKmRadius: 20,
 
   // Zones
-  zones: ["Saint-Omer", "Calais", "Boulogne-sur-Mer", "Dunkerque", "Lille", "Arras", "Bethune", "Hazebrouck"],
+  zones: ["Arras", "Lens", "Douai", "Bethune", "Cambrai", "Lille", "Valenciennes", "Henin-Beaumont"],
 
   // Domaine
   domain: "evenmia.fr",
