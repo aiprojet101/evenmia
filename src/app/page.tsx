@@ -38,6 +38,8 @@ export default function Home() {
             <span className="text-lg font-bold tracking-tight text-[var(--text)]">{config.brand}</span>
           </div>
           <div className="flex items-center gap-5">
+            <Link href="/portfolio" className="hidden md:block text-sm text-[var(--text-light)] hover:text-[var(--rose)] transition">Portfolio</Link>
+            <Link href="/blog" className="hidden md:block text-sm text-[var(--text-light)] hover:text-[var(--rose)] transition">Blog</Link>
             <a href={`tel:${config.phoneIntl}`} className="hidden sm:flex items-center gap-2 text-sm text-[var(--text-light)] hover:text-[var(--rose)] transition">
               <Phone className="w-4 h-4" />
               {config.phone}
