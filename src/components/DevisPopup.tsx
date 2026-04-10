@@ -236,15 +236,6 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
           </div>
           <div className="flex justify-between items-center mt-2">
             <p className="text-xs text-[var(--text-lighter)]">Question {step + 1} / {TOTAL_STEPS}</p>
-            {step >= 2 && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-xs font-medium text-[var(--rose)]"
-              >
-                Estime : {formatPrice(pricing.total)}€
-              </motion.p>
-            )}
           </div>
         </div>
 
