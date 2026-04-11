@@ -1,8 +1,7 @@
 "use client";
 
-import { Suspense, useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Heart, Gem, Cake, Baby, Gift, Building2, Sparkles,
@@ -76,33 +75,26 @@ function FloatingParticle({ delay, x, y, size }: { delay: number; x: string; y: 
   );
 }
 
-function DevisAutoOpen({ onOpen }: { onOpen: (type: string) => void }) {
-  const searchParams = useSearchParams();
-  useEffect(() => {
-    if (searchParams.get("devis") === "1") {
-      onOpen(searchParams.get("type") || "");
-    }
-  }, [searchParams, onOpen]);
-  return null;
-}
-
 export default function Home() {
   const [showDevis, setShowDevis] = useState(false);
   const [devisType, setDevisType] = useState("");
+
+  // Auto-open devis si ?devis=1 dans l'URL
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("devis") === "1") {
+      setDevisType(params.get("type") || "");
+      setShowDevis(true);
+    }
+  }, []);
 
   const openDevis = (type = "") => {
     setDevisType(type);
     setShowDevis(true);
   };
 
-  const handleDevisAutoOpen = useCallback((type: string) => {
-    setDevisType(type);
-    setShowDevis(true);
-  }, []);
-
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden">
-      <Suspense><DevisAutoOpen onOpen={handleDevisAutoOpen} /></Suspense>
       {/* Nav */}
       <motion.nav
         initial={{ y: -100 }}
