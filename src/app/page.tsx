@@ -504,7 +504,12 @@ function HomeContent() {
               </a>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[var(--text-lighter)]">
+          <div className="mt-6 text-center">
+            <p className="text-sm italic text-[var(--rose-dark)]/70">
+              Anais, ce site est un cadeau de ton papa qui est fier de toi. Brille et realise tes reves, je serai toujours la pour toi.
+            </p>
+          </div>
+          <div className="mt-6 pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[var(--text-lighter)]">
             <span>&copy; {new Date().getFullYear()} {config.brand} — Tous droits reserves</span>
             <div className="flex gap-4">
               <Link href="/mentions-legales" className="hover:text-[var(--text-light)] transition">Mentions legales</Link>
