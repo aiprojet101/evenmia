@@ -230,24 +230,31 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
         )}
 
         {/* Slider */}
-        {step.type === "slider" && (
-          <div>
-            <div className="flex justify-between items-end mb-4">
-              <span className="text-sm text-[var(--text-light)]">{step.sliderUnit}</span>
-              <motion.span key={String(val || step.sliderMin)} initial={{ scale: 1.4 }} animate={{ scale: 1 }}
-                className="text-3xl font-bold text-[var(--rose)]">
-                {String(val || step.sliderMin || 0)}
-              </motion.span>
+        {step.type === "slider" && (() => {
+          const range = step.dynamicRange ? step.dynamicRange(answers) : null;
+          const sMin = range?.min ?? step.sliderMin ?? 0;
+          const sMax = range?.max ?? step.sliderMax ?? 100;
+          const current = Number(val || sMin);
+          const clamped = Math.max(sMin, Math.min(sMax, current));
+          return (
+            <div>
+              <div className="flex justify-between items-end mb-4">
+                <span className="text-sm text-[var(--text-light)]">{step.sliderUnit}</span>
+                <motion.span key={String(clamped)} initial={{ scale: 1.4 }} animate={{ scale: 1 }}
+                  className="text-3xl font-bold text-[var(--rose)]">
+                  {String(clamped)}
+                </motion.span>
+              </div>
+              <input type="range" min={sMin} max={sMax} step={step.sliderStep}
+                value={clamped}
+                onChange={(e) => setAnswer(step.id, parseInt(e.target.value))}
+                className="w-full h-2 bg-[var(--warm)] rounded-full appearance-none cursor-pointer accent-[var(--rose)]" />
+              <div className="flex justify-between text-xs text-[var(--text-lighter)] mt-1">
+                <span>{sMin}</span><span>{sMax}</span>
+              </div>
             </div>
-            <input type="range" min={step.sliderMin} max={step.sliderMax} step={step.sliderStep}
-              value={Number(val || step.sliderMin || 0)}
-              onChange={(e) => setAnswer(step.id, parseInt(e.target.value))}
-              className="w-full h-2 bg-[var(--warm)] rounded-full appearance-none cursor-pointer accent-[var(--rose)]" />
-            <div className="flex justify-between text-xs text-[var(--text-lighter)] mt-1">
-              <span>{step.sliderMin}</span><span>{step.sliderMax}</span>
-            </div>
-          </div>
-        )}
+          );
+        })()}
 
         {/* Boolean */}
         {step.type === "boolean" && (

@@ -24,6 +24,7 @@ export interface QuestionStep {
   required?: boolean;
   showIf?: (answers: Record<string, unknown>) => boolean;
   autoAdvance?: boolean; // passe auto a la question suivante apres selection
+  dynamicRange?: (answers: Record<string, unknown>) => { min: number; max: number };
 }
 
 // =============================================================================
@@ -304,6 +305,15 @@ export const ANNIVERSAIRE_STEPS: QuestionStep[] = [
     subtitle: "Certains ages ont des traditions speciales (1 an, 18 ans, 30 ans, 50 ans...)",
     type: "slider",
     sliderMin: 1, sliderMax: 100, sliderStep: 1, sliderUnit: "ans",
+    dynamicRange: (answers: Record<string, unknown>) => {
+      switch (answers.qui) {
+        case "enfant": return { min: 1, max: 12 };
+        case "ado": return { min: 13, max: 17 };
+        case "adulte": return { min: 18, max: 49 };
+        case "senior": return { min: 50, max: 100 };
+        default: return { min: 1, max: 100 };
+      }
+    },
   },
   {
     id: "invites",
