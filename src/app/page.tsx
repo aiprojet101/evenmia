@@ -112,7 +112,7 @@ function HomeContent() {
       >
         <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
           <motion.div className="flex items-center" whileHover={{ scale: 1.02 }}>
-            <img src="/logo-small.png" alt={config.brand} className="h-10" />
+            <img src="/logo.png" alt={config.brand} className="h-12" />
           </motion.div>
           <div className="flex items-center gap-5">
             <Link href="/portfolio" className="hidden md:block text-sm text-[var(--text-light)] hover:text-[var(--rose)] transition">Portfolio</Link>

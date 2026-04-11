@@ -23,6 +23,10 @@ const description = `Organisation d'evenements sur-mesure : mariages, fiancaille
 export const metadata: Metadata = {
   title,
   description,
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
   keywords: [
     `organisatrice evenements ${config.city}`,
     `wedding planner ${config.region}`,

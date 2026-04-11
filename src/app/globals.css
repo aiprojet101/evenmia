@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-rose {
-  background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+  background: linear-gradient(135deg, var(--sage), #7A9A68);
   color: white;
   font-weight: 600;
   padding: 0.875rem 2rem;
@@ -61,14 +61,14 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.02em;
 }
 .btn-rose:hover {
-  background: linear-gradient(135deg, var(--rose-light), var(--rose));
+  background: linear-gradient(135deg, var(--sage-light), var(--sage));
   transform: translateY(-1px);
-  box-shadow: 0 8px 30px rgba(193, 123, 93, 0.3);
+  box-shadow: 0 8px 30px rgba(163, 177, 138, 0.4);
 }
 
 .btn-outline {
-  border: 1.5px solid var(--rose);
-  color: var(--rose-dark);
+  border: 1.5px solid var(--sage);
+  color: #7A9A68;
   font-weight: 600;
   padding: 0.875rem 2rem;
   border-radius: 9999px;
@@ -76,7 +76,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.875rem;
 }
 .btn-outline:hover {
-  background: var(--rose);
+  background: var(--sage);
   color: white;
 }
 
