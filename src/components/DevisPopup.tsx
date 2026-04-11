@@ -379,27 +379,22 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
 
                     <div className="mt-6">
                       <label className="text-sm font-medium text-[var(--text)] mb-2 block">Lieu de l'evenement</label>
-                      {typeof window !== "undefined" && window.google?.maps ? (
-                        <AddressAutocomplete
-                          label=""
-                          placeholder="Tapez une adresse ou ville..."
-                          onPlaceSelected={async (addr) => {
-                            setLieu(addr);
-                            setDistanceLoading(true);
-                            try {
-                              const res = await fetch(`/api/distance?origin=${encodeURIComponent(config.city + ", France")}&destination=${encodeURIComponent(addr)}`);
-                              if (res.ok) {
-                                const data = await res.json();
-                                setDistanceKm(data.distanceKm);
-                                setAnswer("_distanceKm", data.distanceKm);
-                              }
-                            } catch {} finally { setDistanceLoading(false); }
-                          }}
-                        />
-                      ) : (
-                        <input className="input-light w-full" placeholder="Ville ou adresse" value={lieu}
-                          onChange={(e) => setLieu(e.target.value)} />
-                      )}
+                      <AddressAutocomplete
+                        label=""
+                        placeholder="Tapez une adresse ou ville..."
+                        onPlaceSelected={async (addr) => {
+                          setLieu(addr);
+                          setDistanceLoading(true);
+                          try {
+                            const res = await fetch(`/api/distance?origin=${encodeURIComponent(config.city + ", France")}&destination=${encodeURIComponent(addr)}`);
+                            if (res.ok) {
+                              const data = await res.json();
+                              setDistanceKm(data.distanceKm);
+                              setAnswer("_distanceKm", data.distanceKm);
+                            }
+                          } catch {} finally { setDistanceLoading(false); }
+                        }}
+                      />
                       {distanceLoading && (
                         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}
                           className="flex items-center gap-2 text-xs text-[var(--text-lighter)] mt-2">
