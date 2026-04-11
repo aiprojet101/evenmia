@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X, ArrowRight, ArrowLeft, Check, Heart, Gem, Cake, Baby,
-  Gift, Building2, Sparkles, Phone, Loader2, PartyPopper, Calendar, Star,
+  Gift, Building2, Sparkles, Phone, Loader2, PartyPopper, Calendar, Star, MapPin,
 } from "lucide-react";
 import { config, EVENT_TYPES } from "@/lib/config";
 import { EVENT_STEPS, type QuestionStep } from "@/lib/questions";
@@ -45,6 +45,8 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
   const [lieu, setLieu] = useState("");
   const [notes, setNotes] = useState("");
 
+  const [distanceKm, setDistanceKm] = useState(0);
+  const [distanceLoading, setDistanceLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [showPrice, setShowPrice] = useState(false);
@@ -377,13 +379,48 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
 
                     <div className="mt-6">
                       <label className="text-sm font-medium text-[var(--text)] mb-2 block">Lieu de l'evenement</label>
-                      <AddressAutocomplete
-                        label=""
-                        placeholder="Tapez une adresse ou ville..."
-                        onPlaceSelected={(addr) => setLieu(addr)}
-                      />
-                      {!window.google?.maps && (
-                        <input className="input-light w-full mt-2" placeholder="Ville ou adresse" value={lieu} onChange={(e) => setLieu(e.target.value)} />
+                      {typeof window !== "undefined" && window.google?.maps ? (
+                        <AddressAutocomplete
+                          label=""
+                          placeholder="Tapez une adresse ou ville..."
+                          onPlaceSelected={async (addr) => {
+                            setLieu(addr);
+                            setDistanceLoading(true);
+                            try {
+                              const res = await fetch(`/api/distance?origin=${encodeURIComponent(config.city + ", France")}&destination=${encodeURIComponent(addr)}`);
+                              if (res.ok) {
+                                const data = await res.json();
+                                setDistanceKm(data.distanceKm);
+                                setAnswer("_distanceKm", data.distanceKm);
+                              }
+                            } catch {} finally { setDistanceLoading(false); }
+                          }}
+                        />
+                      ) : (
+                        <input className="input-light w-full" placeholder="Ville ou adresse" value={lieu}
+                          onChange={(e) => setLieu(e.target.value)} />
+                      )}
+                      {distanceLoading && (
+                        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+                          className="flex items-center gap-2 text-xs text-[var(--text-lighter)] mt-2">
+                          <Loader2 className="w-3 h-3 animate-spin" /> Calcul de la distance...
+                        </motion.p>
+                      )}
+                      {distanceKm > 0 && !distanceLoading && (
+                        <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }}
+                          className="mt-2 bg-white rounded-xl border border-[var(--border)] p-3 flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <MapPin className="w-4 h-4 text-[var(--rose)]" />
+                            <span className="text-sm">{distanceKm} km depuis {config.city}</span>
+                          </div>
+                          {distanceKm > config.freeKmRadius ? (
+                            <span className="text-sm font-medium text-[var(--rose)]">
+                              +{Math.round((distanceKm - config.freeKmRadius) * config.pricePerKm * 4)}€
+                            </span>
+                          ) : (
+                            <span className="text-sm text-[var(--sage)] font-medium">Gratuit</span>
+                          )}
+                        </motion.div>
                       )}
                       <p className="text-xs text-[var(--text-lighter)] mt-1">Gratuit dans un rayon de {config.freeKmRadius}km autour d'{config.city}</p>
                     </div>
