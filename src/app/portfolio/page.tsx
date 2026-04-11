@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Heart, Gem, Cake, Baby, Building2, Sparkles } from "lucide-react";
 import { config } from "@/lib/config";
 
-// Placeholder portfolio items — will be replaced with real photos
 const PORTFOLIO_ITEMS = [
   {
     id: 1,
@@ -13,7 +12,7 @@ const PORTFOLIO_ITEMS = [
     category: "mariage",
     description: "Un mariage en plein air dans un domaine du Pas-de-Calais. 120 invites, decoration florale, tons pastel et bois naturel.",
     guests: 120,
-    color: "from-[var(--rose)]/20 to-[var(--sage)]/20",
+    image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=500&fit=crop",
   },
   {
     id: 2,
@@ -21,7 +20,7 @@ const PORTFOLIO_ITEMS = [
     category: "bapteme",
     description: "Bapteme intimiste de 40 personnes. Arche fleurie, sweet table, tons beige et eucalyptus.",
     guests: 40,
-    color: "from-[var(--sage)]/20 to-[var(--cream)]",
+    image: "https://images.unsplash.com/photo-1474552226712-ac0f0961a954?w=800&h=500&fit=crop",
   },
   {
     id: 3,
@@ -29,7 +28,7 @@ const PORTFOLIO_ITEMS = [
     category: "seminaire",
     description: "Journee seminaire pour 80 collaborateurs. Ateliers, cocktail, soiree de gala.",
     guests: 80,
-    color: "from-[var(--rose-dark)]/10 to-[var(--rose)]/10",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=500&fit=crop",
   },
   {
     id: 4,
@@ -37,7 +36,7 @@ const PORTFOLIO_ITEMS = [
     category: "fiancailles",
     description: "Soiree surprise pour 30 proches. Decoration elegante, photobooth, gateau personnalise.",
     guests: 30,
-    color: "from-[var(--rose)]/15 to-[var(--rose-light)]/15",
+    image: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=800&h=500&fit=crop",
   },
   {
     id: 5,
@@ -45,7 +44,7 @@ const PORTFOLIO_ITEMS = [
     category: "anniversaire",
     description: "Fete d'anniversaire festive pour 60 invites. Theme dore, DJ, animations.",
     guests: 60,
-    color: "from-[var(--rose-light)]/20 to-[var(--sage-light)]/20",
+    image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=500&fit=crop",
   },
   {
     id: 6,
@@ -53,7 +52,7 @@ const PORTFOLIO_ITEMS = [
     category: "baby-shower",
     description: "Apres-midi douceur entre amies. Candy bar, jeux, decoration rose et dore.",
     guests: 25,
-    color: "from-[var(--rose)]/10 to-[var(--cream)]",
+    image: "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&h=500&fit=crop",
   },
 ];
 
@@ -118,12 +117,13 @@ export default function PortfolioPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((item) => (
             <div key={item.id} className="card-light overflow-hidden group">
-              {/* Placeholder image */}
-              <div className={`h-56 bg-gradient-to-br ${item.color} flex items-center justify-center`}>
-                <div className="text-center">
-                  <Sparkles className="w-10 h-10 text-[var(--rose)]/40 mx-auto mb-2" />
-                  <p className="text-xs text-[var(--text-lighter)]">Photo a venir</p>
-                </div>
+              <div className="h-56 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-2">
