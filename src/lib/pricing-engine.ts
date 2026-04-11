@@ -43,7 +43,10 @@ export function calculateFromAnswers(
 
     if (step.type === "single" && step.options) {
       const opt = step.options.find(o => o.id === answer);
-      if (opt?.price && opt.price > 0) {
+      if (opt?.pricePerPerson && opt.pricePerPerson > 0 && invites > 0) {
+        const amount = Math.round(opt.pricePerPerson * invites);
+        breakdown.push({ label: `${opt.label} (${opt.pricePerPerson}€ x ${invites} pers.)`, amount });
+      } else if (opt?.price && opt.price > 0) {
         breakdown.push({ label: opt.label, amount: opt.price });
       }
     }
@@ -51,14 +54,13 @@ export function calculateFromAnswers(
     if (step.type === "multi" && Array.isArray(answer) && step.options) {
       for (const val of answer) {
         const opt = step.options.find(o => o.id === val);
-        if (opt?.price && opt.price > 0) {
+        if (opt?.pricePerPerson && opt.pricePerPerson > 0 && invites > 0) {
+          const amount = Math.round(opt.pricePerPerson * invites);
+          breakdown.push({ label: `${opt.label} (${opt.pricePerPerson}€ x ${invites} pers.)`, amount });
+        } else if (opt?.price && opt.price > 0) {
           breakdown.push({ label: opt.label, amount: opt.price });
         }
       }
-    }
-
-    if (step.type === "boolean" && answer === true) {
-      // Some booleans have associated costs handled via pricing note
     }
   }
 

@@ -185,7 +185,11 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
                       <p className="font-medium text-sm">{opt.label}</p>
                       {opt.priceNote && <p className="text-xs text-[var(--text-lighter)]">{opt.priceNote}</p>}
                     </div>
-                    {opt.price && opt.price > 0 && <span className="text-xs text-[var(--rose)] font-medium">+{opt.price}€</span>}
+                    {opt.pricePerPerson && opt.pricePerPerson > 0 ? (
+                      <span className="text-xs text-[var(--rose)] font-medium">+{opt.pricePerPerson}€/pers</span>
+                    ) : opt.price && opt.price > 0 ? (
+                      <span className="text-xs text-[var(--rose)] font-medium">+{opt.price}€</span>
+                    ) : null}
                   </div>
                 </motion.button>
               );
@@ -212,7 +216,11 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
                   </motion.div>
                   {opt.emoji && <span className="text-lg">{opt.emoji}</span>}
                   <span className="flex-1 font-medium text-sm">{opt.label}</span>
-                  {opt.price && opt.price > 0 && <span className="text-xs text-[var(--rose)]">+{opt.price}€</span>}
+                  {opt.pricePerPerson && opt.pricePerPerson > 0 ? (
+                    <span className="text-xs text-[var(--rose)]">+{opt.pricePerPerson}€/pers</span>
+                  ) : opt.price && opt.price > 0 ? (
+                    <span className="text-xs text-[var(--rose)]">+{opt.price}€</span>
+                  ) : null}
                 </motion.button>
               );
             })}

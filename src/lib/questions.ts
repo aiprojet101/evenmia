@@ -5,7 +5,8 @@ export interface QuestionOption {
   id: string;
   label: string;
   emoji?: string;
-  price?: number; // impact prix direct
+  price?: number; // impact prix direct (fixe)
+  pricePerPerson?: number; // prix par personne (multiplie par nb invites)
   priceNote?: string;
   showIf?: string; // ne s'affiche que si cette reponse precedente est selectionnee
 }
@@ -109,12 +110,12 @@ export const MARIAGE_STEPS: QuestionStep[] = [
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "assis", label: "Repas assis servi a table", emoji: "🍽️" },
-      { id: "buffet", label: "Buffet", emoji: "🥗" },
-      { id: "cocktail", label: "Cocktail dinatoire", emoji: "🥂" },
-      { id: "food-truck", label: "Food trucks", emoji: "🚚" },
-      { id: "mixte", label: "Cocktail + repas assis", emoji: "✨" },
-      { id: "brunch", label: "Brunch du lendemain", emoji: "🥐", price: 100 },
+      { id: "assis", label: "Repas assis servi a table", emoji: "🍽️", pricePerPerson: 5, priceNote: "Coordination traiteur" },
+      { id: "buffet", label: "Buffet", emoji: "🥗", pricePerPerson: 4 },
+      { id: "cocktail", label: "Cocktail dinatoire", emoji: "🥂", pricePerPerson: 3 },
+      { id: "food-truck", label: "Food trucks", emoji: "🚚", pricePerPerson: 2 },
+      { id: "mixte", label: "Cocktail + repas assis", emoji: "✨", pricePerPerson: 6 },
+      { id: "brunch", label: "Brunch du lendemain", emoji: "🥐", pricePerPerson: 3 },
     ],
   },
   {
@@ -124,9 +125,9 @@ export const MARIAGE_STEPS: QuestionStep[] = [
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "open-bar", label: "Open bar toute la soiree", emoji: "🍾", price: 400 },
-      { id: "open-limite", label: "Open bar limite (3-4h)", emoji: "🍷", price: 200 },
-      { id: "repas-seul", label: "Boissons au repas uniquement", emoji: "🥂" },
+      { id: "open-bar", label: "Open bar toute la soiree", emoji: "🍾", pricePerPerson: 5 },
+      { id: "open-limite", label: "Open bar limite (3-4h)", emoji: "🍷", pricePerPerson: 3 },
+      { id: "repas-seul", label: "Boissons au repas uniquement", emoji: "🥂", pricePerPerson: 1 },
       { id: "soft", label: "Soft bar uniquement", emoji: "🥤" },
     ],
   },
@@ -136,10 +137,10 @@ export const MARIAGE_STEPS: QuestionStep[] = [
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "piece-montee", label: "Piece montee (choux)", emoji: "🎂" },
-      { id: "wedding-cake", label: "Wedding cake a l'americaine", emoji: "🎂", price: 100 },
-      { id: "naked-cake", label: "Naked cake", emoji: "🍰" },
-      { id: "dessert-buffet", label: "Buffet de desserts", emoji: "🧁", price: 80 },
+      { id: "piece-montee", label: "Piece montee (choux)", emoji: "🎂", pricePerPerson: 1.5 },
+      { id: "wedding-cake", label: "Wedding cake a l'americaine", emoji: "🎂", pricePerPerson: 2.5 },
+      { id: "naked-cake", label: "Naked cake", emoji: "🍰", pricePerPerson: 2 },
+      { id: "dessert-buffet", label: "Buffet de desserts", emoji: "🧁", pricePerPerson: 3 },
       { id: "non", label: "Pas de gateau special", emoji: "❌" },
     ],
   },
@@ -364,10 +365,10 @@ export const ANNIVERSAIRE_STEPS: QuestionStep[] = [
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "sur-mesure", label: "Gateau sur-mesure (cake design)", emoji: "🎂", price: 80 },
-      { id: "piece-montee", label: "Piece montee", emoji: "🍰", price: 60 },
-      { id: "cupcakes", label: "Tower de cupcakes", emoji: "🧁", price: 50 },
-      { id: "simple", label: "Gateau classique", emoji: "🎂" },
+      { id: "sur-mesure", label: "Gateau sur-mesure (cake design)", emoji: "🎂", pricePerPerson: 2.5 },
+      { id: "piece-montee", label: "Piece montee", emoji: "🍰", pricePerPerson: 2 },
+      { id: "cupcakes", label: "Tower de cupcakes", emoji: "🧁", pricePerPerson: 1.5 },
+      { id: "simple", label: "Gateau classique", emoji: "🎂", pricePerPerson: 0.5 },
       { id: "aucun", label: "Pas de gateau", emoji: "❌" },
     ],
   },
@@ -409,10 +410,10 @@ export const ANNIVERSAIRE_STEPS: QuestionStep[] = [
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "traiteur", label: "Traiteur / Repas complet", emoji: "🍽️", price: 150, priceNote: "Recherche et coordination traiteur" },
-      { id: "buffet", label: "Buffet", emoji: "🥗", price: 100 },
-      { id: "aperitif", label: "Aperitif dinatoire", emoji: "🥂", price: 80 },
-      { id: "gouter", label: "Gouter (enfants)", emoji: "🧃" },
+      { id: "traiteur", label: "Traiteur / Repas complet", emoji: "🍽️", pricePerPerson: 5, priceNote: "Coordination traiteur" },
+      { id: "buffet", label: "Buffet", emoji: "🥗", pricePerPerson: 4 },
+      { id: "aperitif", label: "Aperitif dinatoire", emoji: "🥂", pricePerPerson: 3 },
+      { id: "gouter", label: "Gouter (enfants)", emoji: "🧃", pricePerPerson: 1 },
       { id: "gere", label: "Je gere moi-meme", emoji: "👨‍🍳" },
     ],
   },
@@ -489,10 +490,10 @@ export const BAPTEME_STEPS: QuestionStep[] = [
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "repas", label: "Repas assis complet", emoji: "🍽️", price: 150 },
-      { id: "buffet", label: "Buffet", emoji: "🥗", price: 100 },
-      { id: "cocktail", label: "Vin d'honneur / Cocktail", emoji: "🥂", price: 60 },
-      { id: "gouter", label: "Gouter / Brunch", emoji: "🧁" },
+      { id: "repas", label: "Repas assis complet", emoji: "🍽️", pricePerPerson: 5 },
+      { id: "buffet", label: "Buffet", emoji: "🥗", pricePerPerson: 4 },
+      { id: "cocktail", label: "Vin d'honneur / Cocktail", emoji: "🥂", pricePerPerson: 2.5 },
+      { id: "gouter", label: "Gouter / Brunch", emoji: "🧁", pricePerPerson: 1.5 },
       { id: "domicile", label: "Reception a la maison", emoji: "🏠" },
     ],
   },
@@ -539,9 +540,9 @@ export const BAPTEME_STEPS: QuestionStep[] = [
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "dragees-classique", label: "Dragees traditionnelles", emoji: "🤍", price: 40 },
-      { id: "dragees-originales", label: "Dragees originales / Boites personnalisees", emoji: "🎁", price: 80 },
-      { id: "cadeaux", label: "Petits cadeaux (savons, bougies...)", emoji: "🕯️", price: 60 },
+      { id: "dragees-classique", label: "Dragees traditionnelles", emoji: "🤍", pricePerPerson: 1 },
+      { id: "dragees-originales", label: "Dragees originales / Boites personnalisees", emoji: "🎁", pricePerPerson: 2 },
+      { id: "cadeaux", label: "Petits cadeaux (savons, bougies...)", emoji: "🕯️", pricePerPerson: 1.5 },
       { id: "non", label: "Non merci", emoji: "❌" },
     ],
   },
@@ -551,10 +552,10 @@ export const BAPTEME_STEPS: QuestionStep[] = [
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "cake-design", label: "Gateau personnalise (cake design)", emoji: "🎂", price: 80 },
-      { id: "piece-montee", label: "Piece montee", emoji: "🍰", price: 60 },
-      { id: "sweet-table", label: "Sweet table complete", emoji: "🧁", price: 150, priceNote: "Cupcakes, cake pops, sables decores..." },
-      { id: "simple", label: "Gateau classique", emoji: "🎂" },
+      { id: "cake-design", label: "Gateau personnalise (cake design)", emoji: "🎂", pricePerPerson: 2.5 },
+      { id: "piece-montee", label: "Piece montee", emoji: "🍰", pricePerPerson: 2 },
+      { id: "sweet-table", label: "Sweet table complete", emoji: "🧁", pricePerPerson: 3.5, priceNote: "Cupcakes, cake pops, sables decores..." },
+      { id: "simple", label: "Gateau classique", emoji: "🎂", pricePerPerson: 0.5 },
     ],
   },
   {
@@ -648,9 +649,9 @@ export const FIANCAILLES_STEPS: QuestionStep[] = [
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "repas", label: "Diner / Repas", emoji: "🍽️", price: 100 },
-      { id: "cocktail", label: "Cocktail / Aperitif", emoji: "🥂", price: 60 },
-      { id: "brunch", label: "Brunch", emoji: "🥐", price: 60 },
+      { id: "repas", label: "Diner / Repas", emoji: "🍽️", pricePerPerson: 5 },
+      { id: "cocktail", label: "Cocktail / Aperitif", emoji: "🥂", pricePerPerson: 3 },
+      { id: "brunch", label: "Brunch", emoji: "🥐", pricePerPerson: 3 },
       { id: "gere", label: "Je gere", emoji: "👨‍🍳" },
     ],
   },
@@ -721,9 +722,9 @@ export const BABY_SHOWER_STEPS: QuestionStep[] = [
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "sweet-table", label: "Sweet table complete", emoji: "🧁", price: 120 },
-      { id: "brunch", label: "Brunch", emoji: "🥐", price: 80 },
-      { id: "the-cafe", label: "The / Cafe + patisseries", emoji: "☕", price: 40 },
+      { id: "sweet-table", label: "Sweet table complete", emoji: "🧁", pricePerPerson: 4 },
+      { id: "brunch", label: "Brunch", emoji: "🥐", pricePerPerson: 3 },
+      { id: "the-cafe", label: "The / Cafe + patisseries", emoji: "☕", pricePerPerson: 1.5 },
       { id: "gere", label: "Je gere moi-meme", emoji: "👩‍🍳" },
     ],
   },
@@ -757,7 +758,7 @@ export const BABY_SHOWER_STEPS: QuestionStep[] = [
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "oui", label: "Oui (bougies, savons, bonbons...)", emoji: "🎁", price: 40 },
+      { id: "oui", label: "Oui (bougies, savons, bonbons...)", emoji: "🎁", pricePerPerson: 1.5 },
       { id: "non", label: "Non", emoji: "❌" },
     ],
   },
@@ -846,10 +847,10 @@ export const SEMINAIRE_STEPS: QuestionStep[] = [
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "traiteur", label: "Traiteur complet", emoji: "🍽️", price: 150 },
-      { id: "buffet", label: "Buffet", emoji: "🥗", price: 100 },
-      { id: "cocktail", label: "Cocktail dinatoire", emoji: "🥂", price: 80 },
-      { id: "food-truck", label: "Food truck", emoji: "🚚", price: 80 },
+      { id: "traiteur", label: "Traiteur complet", emoji: "🍽️", pricePerPerson: 5 },
+      { id: "buffet", label: "Buffet", emoji: "🥗", pricePerPerson: 4 },
+      { id: "cocktail", label: "Cocktail dinatoire", emoji: "🥂", pricePerPerson: 3 },
+      { id: "food-truck", label: "Food truck", emoji: "🚚", pricePerPerson: 2.5 },
       { id: "gere", label: "Deja gere", emoji: "✅" },
     ],
   },
@@ -922,9 +923,9 @@ export const AUTRE_STEPS: QuestionStep[] = [
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "traiteur", label: "Traiteur", emoji: "🍽️", price: 150 },
-      { id: "buffet", label: "Buffet", emoji: "🥗", price: 100 },
-      { id: "cocktail", label: "Cocktail", emoji: "🥂", price: 60 },
+      { id: "traiteur", label: "Traiteur", emoji: "🍽️", pricePerPerson: 5 },
+      { id: "buffet", label: "Buffet", emoji: "🥗", pricePerPerson: 4 },
+      { id: "cocktail", label: "Cocktail", emoji: "🥂", pricePerPerson: 2.5 },
       { id: "gere", label: "Je gere", emoji: "👨‍🍳" },
     ],
   },
