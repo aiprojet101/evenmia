@@ -295,8 +295,7 @@ export const ANNIVERSAIRE_STEPS: QuestionStep[] = [
     options: [
       { id: "enfant", label: "Enfant (1-12 ans)", emoji: "🧒" },
       { id: "ado", label: "Adolescent (13-17 ans)", emoji: "🎮" },
-      { id: "adulte", label: "Adulte", emoji: "🥂" },
-      { id: "senior", label: "Anniversaire marquant (50, 60, 70+)", emoji: "🎉" },
+      { id: "adulte", label: "Adulte (18 ans et +)", emoji: "🥂" },
     ],
   },
   {
@@ -309,9 +308,8 @@ export const ANNIVERSAIRE_STEPS: QuestionStep[] = [
       switch (answers.qui) {
         case "enfant": return { min: 1, max: 12 };
         case "ado": return { min: 13, max: 17 };
-        case "adulte": return { min: 18, max: 49 };
-        case "senior": return { min: 50, max: 100 };
-        default: return { min: 1, max: 100 };
+        case "adulte": return { min: 18, max: 101 };
+        default: return { min: 1, max: 101 };
       }
     },
   },
@@ -344,7 +342,7 @@ export const ANNIVERSAIRE_STEPS: QuestionStep[] = [
     question: "Quelle ambiance ?",
     type: "single",
     autoAdvance: true,
-    showIf: (a) => a.qui === "adulte" || a.qui === "senior",
+    showIf: (a) => a.qui === "adulte",
     options: [
       { id: "chic", label: "Soiree chic & cocktail", emoji: "🥂" },
       { id: "festif", label: "Fete festive & dansante", emoji: "🎉" },
@@ -403,7 +401,7 @@ export const ANNIVERSAIRE_STEPS: QuestionStep[] = [
     id: "activites-adulte",
     question: "Des animations ?",
     type: "multi",
-    showIf: (a) => a.qui === "adulte" || a.qui === "senior" || a.qui === "ado",
+    showIf: (a) => a.qui === "adulte" || a.qui === "ado",
     options: [
       { id: "dj", label: "DJ / Musique", emoji: "🎧", price: 100 },
       { id: "photobooth", label: "Photobooth", emoji: "📸", price: 80 },
@@ -444,7 +442,7 @@ export const ANNIVERSAIRE_STEPS: QuestionStep[] = [
     question: "C'est une fete surprise ?",
     subtitle: "On sait garder un secret !",
     type: "boolean",
-    showIf: (a) => a.qui === "adulte" || a.qui === "senior",
+    showIf: (a) => a.qui === "adulte",
   },
 ];
 
