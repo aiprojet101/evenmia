@@ -44,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-thumb { background: var(--rose-dark); border-radius: 3px; }
 
 .text-rose-gradient {
-  background: linear-gradient(135deg, var(--rose-light), var(--rose), var(--rose-dark));
+  background: linear-gradient(135deg, var(--gold), var(--rose), var(--sage));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
