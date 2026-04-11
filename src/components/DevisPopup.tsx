@@ -10,6 +10,7 @@ import { config, EVENT_TYPES, FORMULAS } from "@/lib/config";
 import { EVENT_STEPS, type QuestionStep } from "@/lib/questions";
 import { calculateFromAnswers, formatPrice } from "@/lib/pricing-engine";
 import { buildWhatsAppUrl, buildDevisMessage } from "./WhatsAppButton";
+import AddressAutocomplete from "./AddressAutocomplete";
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Heart, Gem, Cake, Baby, Gift, Building2, Sparkles,
@@ -404,7 +405,14 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
 
                     <div className="mt-6">
                       <label className="text-sm font-medium text-[var(--text)] mb-2 block">Lieu de l'evenement</label>
-                      <input className="input-light w-full" placeholder="Ville ou adresse" value={lieu} onChange={(e) => setLieu(e.target.value)} />
+                      <AddressAutocomplete
+                        label=""
+                        placeholder="Tapez une adresse ou ville..."
+                        onPlaceSelected={(addr) => setLieu(addr)}
+                      />
+                      {!window.google?.maps && (
+                        <input className="input-light w-full mt-2" placeholder="Ville ou adresse" value={lieu} onChange={(e) => setLieu(e.target.value)} />
+                      )}
                       <p className="text-xs text-[var(--text-lighter)] mt-1">Gratuit dans un rayon de {config.freeKmRadius}km autour d'{config.city}</p>
                     </div>
                   </div>
