@@ -110,9 +110,9 @@ export default function Home() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-0 left-0 right-0 z-50 bg-[var(--cream)]/80 backdrop-blur-xl border-b border-[var(--border)]"
       >
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-2">
           <motion.div className="flex items-center" whileHover={{ scale: 1.02 }}>
-            <img src="/logo.png" alt={config.brand} className="h-12" />
+            <img src="/logo.png" alt={config.brand} className="h-14 sm:h-16" />
           </motion.div>
           <div className="flex items-center gap-5">
             <Link href="/portfolio" className="hidden md:block text-sm text-[var(--text-light)] hover:text-[var(--rose)] transition">Portfolio</Link>
