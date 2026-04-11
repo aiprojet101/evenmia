@@ -4,9 +4,9 @@ import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X, ArrowRight, ArrowLeft, Check, Heart, Gem, Cake, Baby,
-  Gift, Building2, Sparkles, Phone, Loader2, PartyPopper, Calendar,
+  Gift, Building2, Sparkles, Phone, Loader2, PartyPopper, Calendar, Star,
 } from "lucide-react";
-import { config, EVENT_TYPES, FORMULAS } from "@/lib/config";
+import { config, EVENT_TYPES } from "@/lib/config";
 import { EVENT_STEPS, type QuestionStep } from "@/lib/questions";
 import { calculateFromAnswers, formatPrice } from "@/lib/pricing-engine";
 import { buildWhatsAppUrl, buildDevisMessage } from "./WhatsAppButton";
@@ -25,12 +25,12 @@ const slideVariants = {
 interface Props { onClose: () => void; prefillType?: string; }
 
 export default function DevisPopup({ onClose, prefillType = "" }: Props) {
-  // Phase: "type" -> "formula" -> "questions" -> "date" -> "contact" -> "reveal"
-  const [phase, setPhase] = useState<"type" | "formula" | "questions" | "date" | "contact" | "reveal">(prefillType ? "formula" : "type");
+  // Phase: "type" -> "questions" -> "date" -> "funnel" -> "contact" -> "reveal"
+  const [phase, setPhase] = useState<"type" | "questions" | "date" | "funnel" | "contact" | "reveal">(prefillType ? "questions" : "type");
   const [direction, setDirection] = useState(1);
 
   const [eventType, setEventType] = useState(prefillType);
-  const [formula, setFormula] = useState("");
+  const formula = "premium"; // formule determinee par Anais, pas par le client
   const [answers, setAnswers] = useState<Record<string, unknown>>({});
   const [questionIndex, setQuestionIndex] = useState(0);
 
@@ -62,19 +62,19 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
   );
 
   const currentStep = visibleSteps[questionIndex];
-  const totalPhases = 4 + visibleSteps.length; // type + formula + questions + date + contact + reveal
-  const currentPhaseIndex = phase === "type" ? 0 : phase === "formula" ? 1 :
-    phase === "questions" ? 2 + questionIndex : phase === "date" ? 2 + visibleSteps.length :
+  const totalPhases = 4 + visibleSteps.length; // type + questions + date + funnel + contact + reveal
+  const currentPhaseIndex = phase === "type" ? 0 :
+    phase === "questions" ? 1 + questionIndex : phase === "date" ? 1 + visibleSteps.length :
+    phase === "funnel" ? 2 + visibleSteps.length :
     phase === "contact" ? 3 + visibleSteps.length : totalPhases;
   const progress = Math.min(((currentPhaseIndex + 1) / (totalPhases + 2)) * 100, 100);
 
   const pricing = useMemo(() =>
     calculateFromAnswers(eventType, { ...answers, _date: date }, formula),
-    [eventType, answers, formula, date]
+    [eventType, answers, date, formula]
   );
 
   const eventLabel = EVENT_TYPES.find(e => e.id === eventType)?.label || eventType;
-  const formulaObj = FORMULAS.find(f => f.id === formula);
 
   const setAnswer = (id: string, value: unknown) => {
     setAnswers(prev => ({ ...prev, [id]: value }));
@@ -82,31 +82,30 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
 
   const goNextPhase = () => {
     setDirection(1);
-    if (phase === "type") setPhase("formula");
-    else if (phase === "formula") { setQuestionIndex(0); setPhase("questions"); }
+    if (phase === "type") { setQuestionIndex(0); setPhase("questions"); }
     else if (phase === "questions") {
       if (questionIndex < visibleSteps.length - 1) setQuestionIndex(i => i + 1);
       else setPhase("date");
     }
-    else if (phase === "date") setPhase("contact");
+    else if (phase === "date") setPhase("funnel");
+    else if (phase === "funnel") setPhase("contact");
     else if (phase === "contact") setPhase("reveal");
   };
 
   const goBackPhase = () => {
     setDirection(-1);
-    if (phase === "formula") setPhase("type");
-    else if (phase === "questions") {
+    if (phase === "questions") {
       if (questionIndex > 0) setQuestionIndex(i => i - 1);
-      else setPhase("formula");
+      else setPhase("type");
     }
     else if (phase === "date") { setQuestionIndex(visibleSteps.length - 1); setPhase("questions"); }
-    else if (phase === "contact") setPhase("date");
+    else if (phase === "funnel") setPhase("date");
+    else if (phase === "contact") setPhase("funnel");
     else if (phase === "reveal") setPhase("contact");
   };
 
   const canNext = (): boolean => {
     if (phase === "type") return !!eventType;
-    if (phase === "formula") return !!formula;
     if (phase === "questions" && currentStep) {
       if (!currentStep.required && currentStep.type === "multi") return true;
       if (currentStep.type === "slider") return true;
@@ -115,6 +114,7 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
       return val !== undefined && val !== "";
     }
     if (phase === "date") return true;
+    if (phase === "funnel") return true;
     if (phase === "contact") return !!(name && phone);
     return true;
   };
@@ -149,7 +149,7 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
       const whatsappUrl = buildWhatsAppUrl(buildDevisMessage({
         eventType: eventLabel, date: date || "A definir",
         guests: String(answers.invites || answers.participants || ""),
-        name, phone, formula: formulaObj?.name || formula,
+        name, phone, formula: formula,
         location: lieu || "A definir",
         notes: `Devis estime: ${formatPrice(pricing.total)}€\n${notes}`,
       }));
@@ -281,9 +281,6 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
               <span className="font-bold text-sm text-[var(--text)]">
                 {phase === "type" ? "Votre projet" : eventLabel}
               </span>
-              {formula && phase !== "type" && phase !== "formula" && (
-                <p className="text-xs text-[var(--text-lighter)]">Formule {formulaObj?.name}</p>
-              )}
             </div>
           </div>
           <motion.button whileHover={{ scale: 1.1, rotate: 90 }} whileTap={{ scale: 0.9 }} onClick={onClose}
@@ -333,7 +330,7 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
                         const Icon = ICON_MAP[evt.icon] || Sparkles;
                         return (
                           <motion.button key={evt.id} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                            onClick={() => { setEventType(evt.id); setAnswers({}); setQuestionIndex(0); setDirection(1); setPhase("formula"); }}
+                            onClick={() => { setEventType(evt.id); setAnswers({}); setQuestionIndex(0); setDirection(1); setTimeout(() => setPhase("questions"), 250); }}
                             className={`p-4 rounded-2xl border-2 text-left transition-all ${
                               eventType === evt.id ? "border-[var(--rose)] bg-[var(--rose)]/10 shadow-md" : "border-[var(--border)] bg-white hover:border-[var(--rose)]/40"
                             }`}>
@@ -342,39 +339,6 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
                           </motion.button>
                         );
                       })}
-                    </div>
-                  </div>
-                )}
-
-                {/* Phase: Formula */}
-                {phase === "formula" && (
-                  <div>
-                    <h2 className="text-xl font-bold text-[var(--text)] mb-1">Quel accompagnement ?</h2>
-                    <p className="text-sm text-[var(--text-light)] mb-5">On s'adapte a vos besoins</p>
-                    <div className="space-y-3">
-                      {FORMULAS.map(f => (
-                        <motion.button key={f.id} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-                          onClick={() => { setFormula(f.id); setDirection(1); setTimeout(() => { setQuestionIndex(0); setPhase("questions"); }, 250); }}
-                          className={`w-full p-5 rounded-2xl border-2 text-left transition-all ${
-                            formula === f.id ? "border-[var(--rose)] bg-[var(--rose)]/10 shadow-md" : "border-[var(--border)] bg-white hover:border-[var(--rose)]/40"
-                          }`}>
-                          <div className="flex justify-between mb-1">
-                            <p className="font-bold">{f.name}</p>
-                            <p className="font-bold text-[var(--rose)]">{f.price}€</p>
-                          </div>
-                          <p className="text-sm text-[var(--text-light)]">{f.description}</p>
-                          {formula === f.id && (
-                            <motion.ul initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
-                              className="mt-3 pt-3 border-t border-[var(--border)] space-y-1">
-                              {f.features.map(feat => (
-                                <li key={feat} className="flex items-center gap-2 text-xs text-[var(--text-light)]">
-                                  <Check className="w-3 h-3 text-[var(--sage)]" /> {feat}
-                                </li>
-                              ))}
-                            </motion.ul>
-                          )}
-                        </motion.button>
-                      ))}
                     </div>
                   </div>
                 )}
@@ -415,6 +379,66 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
                       )}
                       <p className="text-xs text-[var(--text-lighter)] mt-1">Gratuit dans un rayon de {config.freeKmRadius}km autour d'{config.city}</p>
                     </div>
+                  </div>
+                )}
+
+                {/* Phase: Funnel de vente */}
+                {phase === "funnel" && (
+                  <div>
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-6">
+                      <motion.div
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--rose)]/10 flex items-center justify-center"
+                      >
+                        <Heart className="w-8 h-8 text-[var(--rose)]" />
+                      </motion.div>
+                      <h2 className="text-xl font-bold text-[var(--text)] mb-2">
+                        Votre {eventLabel.toLowerCase()} est entre de bonnes mains
+                      </h2>
+                      <p className="text-sm text-[var(--text-light)]">Voici ce qu'Evenmia fait pour vous</p>
+                    </motion.div>
+
+                    <div className="space-y-3">
+                      {[
+                        { emoji: "🎯", title: "Un seul interlocuteur", desc: "Anais s'occupe de tout de A a Z. Vous profitez, elle gere." },
+                        { emoji: "💰", title: "Meilleurs tarifs prestataires", desc: "Grace a notre reseau local, on negocie les meilleurs prix pour vous." },
+                        { emoji: "😌", title: "Zero stress", desc: "Retroplanning, coordination jour-J, gestion des imprevus — on anticipe tout." },
+                        { emoji: "✨", title: "Sur-mesure uniquement", desc: "Pas de formule toute faite. Chaque evenement est unique, comme vous." },
+                        { emoji: "📍", title: "Expertise locale", desc: `On connait les meilleurs lieux et prestataires d'${config.city} et environs.` },
+                      ].map((item, i) => (
+                        <motion.div
+                          key={item.title}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: i * 0.12 }}
+                          className="flex items-start gap-3 bg-white rounded-xl p-3.5 border border-[var(--border)]"
+                        >
+                          <span className="text-xl mt-0.5">{item.emoji}</span>
+                          <div>
+                            <p className="font-semibold text-sm text-[var(--text)]">{item.title}</p>
+                            <p className="text-xs text-[var(--text-light)] leading-relaxed">{item.desc}</p>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.7 }}
+                      className="mt-6 bg-[var(--sage)]/10 rounded-xl p-4 text-center"
+                    >
+                      <p className="text-sm font-medium text-[var(--text)]">
+                        Plus de 50 evenements organises
+                      </p>
+                      <div className="flex justify-center gap-0.5 mt-1">
+                        {[1,2,3,4,5].map(i => (
+                          <Star key={i} className="w-4 h-4 text-[var(--rose)] fill-[var(--rose)]" />
+                        ))}
+                      </div>
+                      <p className="text-xs text-[var(--text-light)] mt-1">Note moyenne 5/5 sur Google</p>
+                    </motion.div>
                   </div>
                 )}
 
