@@ -12,7 +12,7 @@ const PORTFOLIO_ITEMS = [
     category: "mariage",
     description: "Un mariage en plein air dans un domaine du Pas-de-Calais. 120 invites, decoration florale, tons pastel et bois naturel.",
     guests: 120,
-    image: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1507504031003-b417219a0fde?w=800&h=500&fit=crop",
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const PORTFOLIO_ITEMS = [
     category: "bapteme",
     description: "Bapteme intimiste de 40 personnes. Arche fleurie, sweet table, tons beige et eucalyptus.",
     guests: 40,
-    image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=800&h=500&fit=crop",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const PORTFOLIO_ITEMS = [
     category: "seminaire",
     description: "Journee seminaire pour 80 collaborateurs. Ateliers, cocktail, soiree de gala.",
     guests: 80,
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&h=500&fit=crop",
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const PORTFOLIO_ITEMS = [
     category: "fiancailles",
     description: "Soiree surprise pour 30 proches. Decoration elegante, photobooth, gateau personnalise.",
     guests: 30,
-    image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop",
   },
   {
     id: 5,
@@ -44,7 +44,7 @@ const PORTFOLIO_ITEMS = [
     category: "anniversaire",
     description: "Fete d'anniversaire festive pour 60 invites. Theme dore, DJ, animations.",
     guests: 60,
-    image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=800&h=500&fit=crop",
   },
   {
     id: 6,
@@ -52,7 +52,7 @@ const PORTFOLIO_ITEMS = [
     category: "baby-shower",
     description: "Apres-midi douceur entre amies. Candy bar, jeux, decoration rose et dore.",
     guests: 25,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1464349153159-4e5e1927e836?w=800&h=500&fit=crop",
   },
 ];
 
