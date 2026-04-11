@@ -111,11 +111,8 @@ function HomeContent() {
         className="fixed top-0 left-0 right-0 z-50 bg-[var(--cream)]/80 backdrop-blur-xl border-b border-[var(--border)]"
       >
         <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-          <motion.div className="flex items-center gap-2" whileHover={{ scale: 1.02 }}>
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[var(--rose)] to-[var(--rose-dark)] flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-white" />
-            </div>
-            <span className="text-lg font-bold tracking-tight text-[var(--text)]">{config.brand}</span>
+          <motion.div className="flex items-center" whileHover={{ scale: 1.02 }}>
+            <img src="/logo-small.png" alt={config.brand} className="h-10" />
           </motion.div>
           <div className="flex items-center gap-5">
             <Link href="/portfolio" className="hidden md:block text-sm text-[var(--text-light)] hover:text-[var(--rose)] transition">Portfolio</Link>
@@ -487,13 +484,7 @@ function HomeContent() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[var(--rose)] to-[var(--rose-dark)] flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-white" />
-              </div>
-              <div>
-                <span className="font-bold text-[var(--text)]">{config.brand}</span>
-                <p className="text-xs text-[var(--text-lighter)]">Organisation d'evenements — {config.city} & {config.region}</p>
-              </div>
+              <img src="/logo.png" alt={config.brand} className="h-16" />
             </div>
             <div className="flex items-center gap-6 text-sm text-[var(--text-light)]">
               <a href={`tel:${config.phoneIntl}`} className="hover:text-[var(--rose)] transition flex items-center gap-1.5">
