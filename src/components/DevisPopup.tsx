@@ -379,22 +379,15 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
 
                     <div className="mt-6">
                       <label className="text-sm font-medium text-[var(--text)] mb-2 block">Lieu de l'evenement</label>
-                      <AddressAutocomplete
-                        label=""
-                        placeholder="Tapez une adresse ou ville..."
-                        onPlaceSelected={async (addr) => {
-                          setLieu(addr);
-                          setDistanceLoading(true);
-                          try {
-                            const res = await fetch(`/api/distance?origin=${encodeURIComponent(config.city + ", France")}&destination=${encodeURIComponent(addr)}`);
-                            if (res.ok) {
-                              const data = await res.json();
-                              setDistanceKm(data.distanceKm);
-                              setAnswer("_distanceKm", data.distanceKm);
-                            }
-                          } catch {} finally { setDistanceLoading(false); }
-                        }}
-                      />
+                      <div className="relative">
+                        <MapPin className="absolute left-4 top-3 w-4 h-4 text-[var(--rose)]" />
+                        <input
+                          className="input-light pl-11"
+                          placeholder="Ville ou adresse..."
+                          value={lieu}
+                          onChange={(e) => setLieu(e.target.value)}
+                        />
+                      </div>
                       {distanceLoading && (
                         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}
                           className="flex items-center gap-2 text-xs text-[var(--text-lighter)] mt-2">
