@@ -11,9 +11,9 @@ export const config = {
   postalCode: "62000",
 
   // Contact
-  phone: process.env.NEXT_PUBLIC_PHONE || "06 00 00 00 00",
-  phoneIntl: process.env.NEXT_PUBLIC_PHONE_INTL || "+33600000000",
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "33600000000",
+  phone: "07 82 40 09 39",
+  phoneIntl: "+33782400939",
+  whatsapp: "33782400939",
   email: "contact@evenmia.fr",
   instagram: "https://instagram.com/evenmia",
 
