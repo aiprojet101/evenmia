@@ -3,23 +3,26 @@
 @theme inline {
   --font-sans: var(--font-inter);
   --font-heading: var(--font-playfair);
-  --color-rose: #D4A574;
-  --color-rose-light: #E8C9A0;
-  --color-rose-dark: #8B7355;
-  --color-sage: #9CAF88;
+  --color-rose: #C17B5D;
+  --color-rose-light: #D4A088;
+  --color-rose-dark: #9B5A3E;
+  --color-sage: #A3B18A;
   --color-sage-light: #B5C4A5;
-  --color-cream: #FFF8F0;
-  --color-warm: #F5EDE3;
+  --color-cream: #FBF7F2;
+  --color-warm: #F0EAE2;
+  --color-gold: #C5A55A;
 }
 
 :root {
-  --rose: #D4A574;
-  --rose-light: #E8C9A0;
-  --rose-dark: #8B7355;
-  --sage: #9CAF88;
+  --rose: #C17B5D;
+  --rose-light: #D4A088;
+  --rose-dark: #9B5A3E;
+  --sage: #A3B18A;
   --sage-light: #B5C4A5;
-  --cream: #FFF8F0;
-  --warm: #F5EDE3;
+  --gold: #C5A55A;
+  --gold-light: #D4BC7E;
+  --cream: #FBF7F2;
+  --warm: #F0EAE2;
   --text: #3D3229;
   --text-light: #7A6E63;
   --text-lighter: #A69888;
@@ -60,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-rose:hover {
   background: linear-gradient(135deg, var(--rose-light), var(--rose));
   transform: translateY(-1px);
-  box-shadow: 0 8px 30px rgba(212, 165, 116, 0.3);
+  box-shadow: 0 8px 30px rgba(193, 123, 93, 0.3);
 }
 
 .btn-outline {
