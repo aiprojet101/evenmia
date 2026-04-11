@@ -62,7 +62,7 @@ const PORTFOLIO_ITEMS = [
   { id: 45, title: "Garden party anniversaire", category: "anniversaire", description: "Fete en plein air avec buffet, guirlandes et jeux.", guests: 50, image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=500&fit=crop" },
   { id: 46, title: "Bar a cocktails anime", category: "anniversaire", description: "Barman professionnel preparant des cocktails personnalises.", guests: 45, image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&h=500&fit=crop" },
   { id: 47, title: "Photobooth anniversaire", category: "anniversaire", description: "Coin photo avec accessoires fun et tirage instantane.", guests: 55, image: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&h=500&fit=crop" },
-  { id: 48, title: "Decoration ballons luxe", category: "anniversaire", description: "Arche de ballons metalliques dores et blancs.", guests: 35, image: "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&h=500&fit=crop" },
+  { id: 48, title: "Decoration ballons luxe", category: "anniversaire", description: "Arche de ballons metalliques dores et blancs.", guests: 35, image: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&h=500&fit=crop" },
   { id: 49, title: "Sweet table anniversaire", category: "anniversaire", description: "Table de desserts avec cupcakes, macarons et cake pops.", guests: 30, image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&h=500&fit=crop" },
   { id: 50, title: "Fete surprise decoration", category: "anniversaire", description: "Salle decoree pour une fete surprise inoubliable.", guests: 40, image: "https://images.unsplash.com/photo-1496843916299-590492c751f4?w=800&h=500&fit=crop" },
 
