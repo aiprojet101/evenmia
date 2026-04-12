@@ -12,16 +12,16 @@ import { config, EVENT_TYPES, FORMULAS, SERVICES } from "@/lib/config";
 import DevisPopup from "@/components/DevisPopup";
 
 const TESTIMONIALS = [
-  { name: "Sophie L.", text: "Anais a transforme notre mariage en un reve eveille. Chaque detail etait parfait, du premier rendez-vous jusqu'a la derniere danse.", stars: 5, tag: "Mariage", initials: "SL" },
-  { name: "Julie & Marc", text: "Un bapteme magnifique organise en un mois seulement. Decoration sublime, coordination impeccable. On recommande a 200% !", stars: 5, tag: "Bapteme", initials: "JM" },
-  { name: "Thomas R.", text: "Seminaire de 80 personnes gere sans stress. Nos collaborateurs en parlent encore. Merci Evenmia !", stars: 5, tag: "Seminaire CE", initials: "TR" },
-  { name: "Camille D.", text: "Ma baby shower etait absolument magique. Anais a su capter exactement l'ambiance que je voulais.", stars: 5, tag: "Baby Shower", initials: "CD" },
+  { name: "Sophie L.", text: "Anaïs a transformé notre mariage en un rêve éveillé. Chaque détail était parfait, du premier rendez-vous jusqu'à la dernière danse.", stars: 5, tag: "Mariage", initials: "SL" },
+  { name: "Julie & Marc", text: "Un baptême magnifique organisé en un mois seulement. Décoration sublime, coordination impeccable. On recommande à 200% !", stars: 5, tag: "Baptême", initials: "JM" },
+  { name: "Thomas R.", text: "Séminaire de 80 personnes géré sans stress. Nos collaborateurs en parlent encore. Merci Evenmia !", stars: 5, tag: "Séminaire CE", initials: "TR" },
+  { name: "Camille D.", text: "Ma baby shower était absolument magique. Anaïs a su capter exactement l'ambiance que je voulais.", stars: 5, tag: "Baby Shower", initials: "CD" },
 ];
 
 const STEPS = [
-  { num: "01", title: "Racontez-nous", desc: "Repondez a quelques questions sur votre evenement reve", icon: Heart },
-  { num: "02", title: "On imagine ensemble", desc: "Rendez-vous pour affiner votre vision, budget et envies", icon: Palette },
-  { num: "03", title: "On s'occupe de tout", desc: "Organisation, coordination, decoration — profitez", icon: Sparkles },
+  { num: "01", title: "Racontez-moi", desc: "Répondez à quelques questions sur votre événement de rêve", icon: Heart },
+  { num: "02", title: "Je crée vos décorations", desc: "Je conçois et réalise moi-même toutes vos décorations sur-mesure", icon: Palette },
+  { num: "03", title: "Je m'occupe de tout", desc: "Organisation, coordination, décoration — vous profitez pleinement", icon: Sparkles },
 ];
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -182,7 +182,7 @@ export default function Home() {
               transition={{ duration: 3, repeat: Infinity }}
             >
               <Sparkles className="w-3.5 h-3.5" />
-              Organisation d'evenements — {config.city} & {config.region}
+              Organisation d'événements — {config.city} & {config.region}
             </motion.div>
           </motion.div>
 
@@ -192,7 +192,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            Vos evenements
+            Vos événements
             <br />
             <motion.span
               className="text-rose-gradient inline-block"
@@ -210,9 +210,9 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
           >
-            Mariages, fiancailles, anniversaires, baptemes, seminaires...
+            Mariages, fiançailles, anniversaires, baptêmes, séminaires...
             <br className="hidden sm:block" />
-            Chaque moment merite d'etre <strong className="text-[var(--rose-dark)]">inoubliable</strong>.
+            Chaque moment mérite d'être <strong className="text-[var(--rose-dark)]">inoubliable</strong>.
           </motion.p>
 
           <motion.div
@@ -227,7 +227,7 @@ export default function Home() {
               onClick={() => openDevis()}
               className="btn-rose flex items-center gap-2 text-base !py-4 !px-8"
             >
-              Creer mon evenement
+              Créer mon événement
               <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
                 <ArrowRight className="w-5 h-5" />
               </motion.span>
@@ -251,7 +251,7 @@ export default function Home() {
           >
             {[
               { value: "5.0", label: "Google", stars: true },
-              { value: "50+", label: "Evenements" },
+              { value: "50+", label: "Événements" },
               { value: "100%", label: "Sur-mesure" },
             ].map((stat, i) => (
               <div key={stat.label} className="flex items-center gap-6 sm:gap-10">
@@ -283,12 +283,12 @@ export default function Home() {
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
-            <p className="text-[var(--rose)] text-sm font-medium uppercase tracking-widest text-center mb-3">Nos specialites</p>
+            <p className="text-[var(--rose)] text-sm font-medium uppercase tracking-widest text-center mb-3">Mes spécialités</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 text-[var(--text)]">
-              Chaque evenement est <span className="text-rose-gradient">unique</span>
+              Chaque événement est <span className="text-rose-gradient">unique</span>
             </h2>
             <p className="text-center text-[var(--text-light)] mb-16 max-w-lg mx-auto">
-              Particuliers ou entreprises, nous donnons vie a vos projets.
+              Particuliers ou entreprises, je donne vie à vos projets.
             </p>
           </AnimatedSection>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -323,9 +323,9 @@ export default function Home() {
       <section className="py-24 px-6 bg-white relative">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <p className="text-[var(--rose)] text-sm font-medium uppercase tracking-widest text-center mb-3">Comment ca marche</p>
+            <p className="text-[var(--rose)] text-sm font-medium uppercase tracking-widest text-center mb-3">Comment ça marche</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16 text-[var(--text)]">
-              Votre evenement en <span className="text-rose-gradient">3 etapes</span>
+              Votre événement en <span className="text-rose-gradient">3 étapes</span>
             </h2>
           </AnimatedSection>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
@@ -351,12 +351,12 @@ export default function Home() {
       <section id="tarifs" className="py-24 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
-            <p className="text-[var(--rose)] text-sm font-medium uppercase tracking-widest text-center mb-3">Nos formules</p>
+            <p className="text-[var(--rose)] text-sm font-medium uppercase tracking-widest text-center mb-3">Mes formules</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 text-[var(--text)]">
               Une formule pour chaque <span className="text-rose-gradient">besoin</span>
             </h2>
             <p className="text-center text-[var(--text-light)] mb-16 max-w-lg mx-auto">
-              Du jour-J a l'organisation complete, choisissez votre niveau d'accompagnement.
+              Du jour-J à l'organisation complète, choisissez votre niveau d'accompagnement.
             </p>
           </AnimatedSection>
 

@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X, ArrowRight, ArrowLeft, Check, Heart, Gem, Cake, Baby,
-  Gift, Building2, Sparkles, Phone, Loader2, PartyPopper, Calendar, Star, MapPin,
+  Gift, Building2, Sparkles, Phone, Loader2, PartyPopper, Calendar, Star, MapPin, Mail,
 } from "lucide-react";
 import { config, EVENT_TYPES } from "@/lib/config";
 import { EVENT_STEPS, type QuestionStep } from "@/lib/questions";
@@ -136,7 +136,7 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
     }
   };
 
-  async function handleSubmit() {
+  async function handleSubmit(via: "whatsapp" | "email" = "whatsapp") {
     setSubmitting(true);
     try {
       await fetch("/api/devis", {
@@ -144,18 +144,38 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           eventType, formula, answers, date, dateFlexible,
-          name, phone, email, lieu, notes,
-          estimatedPrice: pricing.total,
+          name, phone, email, lieu, notes, via,
         }),
       });
-      const whatsappUrl = buildWhatsAppUrl(buildDevisMessage({
-        eventType: eventLabel, date: date || "A definir",
-        guests: String(answers.invites || answers.participants || ""),
-        name, phone, formula: formula,
-        location: lieu || "A definir",
-        notes: `Devis estime: ${formatPrice(pricing.total)}€\n${notes}`,
-      }));
-      window.open(whatsappUrl, "_blank");
+      if (via === "whatsapp") {
+        const whatsappUrl = buildWhatsAppUrl(buildDevisMessage({
+          eventType: eventLabel, date: date || "A definir",
+          guests: String(answers.invites || answers.participants || ""),
+          name, phone, formula: "",
+          location: lieu || "A definir",
+          notes,
+        }));
+        window.open(whatsappUrl, "_blank");
+      } else {
+        // Email : on ouvre le client mail
+        const subject = encodeURIComponent(`Demande de devis — ${eventLabel}`);
+        const body = encodeURIComponent(`Bonjour Anaïs,
+
+Je souhaite un devis pour un ${eventLabel.toLowerCase()}.
+
+Détails :
+- Date : ${date || "à définir"}
+- Invités : ${answers.invites || answers.participants || "—"}
+- Lieu : ${lieu || "à définir"}
+- Nom : ${name}
+- Téléphone : ${phone}
+- Email : ${email || "—"}
+
+${notes || ""}
+
+Merci !`);
+        window.location.href = `mailto:${config.email}?subject=${subject}&body=${body}`;
+      }
       setSubmitted(true);
     } catch { alert("Erreur."); } finally { setSubmitting(false); }
   }
@@ -187,11 +207,6 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
                       <p className="font-medium text-sm">{opt.label}</p>
                       {opt.priceNote && <p className="text-xs text-[var(--text-lighter)]">{opt.priceNote}</p>}
                     </div>
-                    {opt.pricePerPerson && opt.pricePerPerson > 0 ? (
-                      <span className="text-xs text-[var(--rose)] font-medium">+{opt.pricePerPerson}€/pers</span>
-                    ) : opt.price && opt.price > 0 ? (
-                      <span className="text-xs text-[var(--rose)] font-medium">+{opt.price}€</span>
-                    ) : null}
                   </div>
                 </motion.button>
               );
@@ -218,11 +233,6 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
                   </motion.div>
                   {opt.emoji && <span className="text-lg">{opt.emoji}</span>}
                   <span className="flex-1 font-medium text-sm">{opt.label}</span>
-                  {opt.pricePerPerson && opt.pricePerPerson > 0 ? (
-                    <span className="text-xs text-[var(--rose)]">+{opt.pricePerPerson}€/pers</span>
-                  ) : opt.price && opt.price > 0 ? (
-                    <span className="text-xs text-[var(--rose)]">+{opt.price}€</span>
-                  ) : null}
                 </motion.button>
               );
             })}
@@ -323,14 +333,9 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
                   className="w-20 h-20 mx-auto mb-6 rounded-full bg-[var(--sage)]/20 flex items-center justify-center">
                   <PartyPopper className="w-10 h-10 text-[var(--sage)]" />
                 </motion.div>
-                <h2 className="text-2xl font-bold text-[var(--text)] mb-2">Demande envoyee !</h2>
+                <h2 className="text-2xl font-bold text-[var(--text)] mb-2">Demande envoyée !</h2>
                 <p className="text-[var(--text-light)] mb-4">Merci {name} !</p>
-                <div className="card-light p-5 mb-4 text-center">
-                  <p className="text-sm text-[var(--text-lighter)] mb-1">Devis estime pour votre {eventLabel.toLowerCase()}</p>
-                  <p className="text-4xl font-bold text-[var(--rose)]">{formatPrice(pricing.total)}€</p>
-                  <p className="text-xs text-[var(--text-lighter)] mt-1">Acompte : {formatPrice(pricing.deposit)}€</p>
-                </div>
-                <p className="text-sm text-[var(--text-light)] mb-6">Reponse sous 24h avec le devis detaille.</p>
+                <p className="text-sm text-[var(--text-light)] mb-6">Je prends connaissance de votre demande et vous recontacte très vite pour en discuter ensemble et affiner votre projet.</p>
                 <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={onClose} className="btn-rose">Fermer</motion.button>
               </motion.div>
             ) : (
@@ -504,55 +509,58 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
                   </div>
                 )}
 
-                {/* Phase: Reveal */}
+                {/* Phase: Choix envoi */}
                 {phase === "reveal" && (
                   <div>
-                    {!showPrice ? (
-                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-8">
-                        <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 2 }}>
-                          <PartyPopper className="w-16 h-16 text-[var(--rose)] mx-auto mb-6" />
-                        </motion.div>
-                        <h2 className="text-2xl font-bold text-[var(--text)] mb-3">Votre devis est pret !</h2>
-                        <p className="text-sm text-[var(--text-light)] mb-8">Base sur vos {visibleSteps.length} reponses</p>
-                        <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                          onClick={() => setShowPrice(true)}
-                          className="btn-rose !py-4 !px-10 text-lg mx-auto flex items-center gap-3">
-                          Decouvrir mon devis
-                          <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
-                            <ArrowRight className="w-5 h-5" />
-                          </motion.span>
-                        </motion.button>
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mb-6">
+                      <motion.div animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 2, repeat: Infinity }}
+                        className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--sage)]/20 flex items-center justify-center">
+                        <PartyPopper className="w-8 h-8 text-[var(--sage)]" />
                       </motion.div>
-                    ) : (
-                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                        <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-                          transition={{ type: "spring", damping: 15 }} className="card-light p-6 text-center mb-4">
-                          <p className="text-sm text-[var(--text-lighter)] mb-1">Votre {eventLabel.toLowerCase()}</p>
-                          <motion.p initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", delay: 0.3 }}
-                            className="text-5xl font-bold text-[var(--rose)] my-3">{formatPrice(pricing.total)}€</motion.p>
-                          <p className="text-xs text-[var(--text-lighter)]">Acompte : {formatPrice(pricing.deposit)}€ (30%)</p>
-                        </motion.div>
+                      <h2 className="text-xl font-bold text-[var(--text)] mb-2">Comment souhaitez-vous m'envoyer votre demande ?</h2>
+                      <p className="text-sm text-[var(--text-light)]">Je vous recontacte sous 24h pour en discuter</p>
+                    </motion.div>
 
-                        <motion.details initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mb-4">
-                          <summary className="cursor-pointer text-[var(--rose)] font-medium text-sm mb-2">Detail du devis</summary>
-                          <div className="space-y-1 text-xs text-[var(--text-light)] bg-white rounded-xl p-4">
-                            {pricing.breakdown.map((b, i) => (
-                              <div key={i} className="flex justify-between">
-                                <span>{b.label}</span>
-                                <span className="font-medium">{b.amount > 0 ? "+" : ""}{formatPrice(b.amount)}€</span>
-                              </div>
-                            ))}
-                            <div className="flex justify-between font-bold text-[var(--text)] pt-2 border-t border-[var(--border)]">
-                              <span>Total</span><span>{formatPrice(pricing.total)}€</span>
-                            </div>
-                          </div>
-                        </motion.details>
+                    <div className="space-y-3">
+                      <motion.button
+                        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+                        whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                        onClick={() => handleSubmit("whatsapp")}
+                        disabled={submitting}
+                        className="w-full p-5 rounded-2xl border-2 border-[#25D366] bg-[#25D366]/5 hover:bg-[#25D366]/10 flex items-center gap-4 transition-all disabled:opacity-50"
+                      >
+                        <div className="w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center shrink-0">
+                          <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                          </svg>
+                        </div>
+                        <div className="flex-1 text-left">
+                          <p className="font-bold text-[var(--text)]">Envoyer par WhatsApp</p>
+                          <p className="text-xs text-[var(--text-light)]">Rapide — discutons directement</p>
+                        </div>
+                      </motion.button>
 
-                        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }}
-                          className="text-xs text-[var(--text-lighter)] text-center mb-2">
-                          Estimation indicative. Le devis definitif sera affine ensemble.
-                        </motion.p>
-                      </motion.div>
+                      <motion.button
+                        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
+                        whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                        onClick={() => handleSubmit("email")}
+                        disabled={submitting}
+                        className="w-full p-5 rounded-2xl border-2 border-[var(--rose)] bg-[var(--rose)]/5 hover:bg-[var(--rose)]/10 flex items-center gap-4 transition-all disabled:opacity-50"
+                      >
+                        <div className="w-12 h-12 rounded-full bg-[var(--rose)] flex items-center justify-center shrink-0">
+                          <Mail className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="flex-1 text-left">
+                          <p className="font-bold text-[var(--text)]">Envoyer par email</p>
+                          <p className="text-xs text-[var(--text-light)]">Je vous recontacte par mail</p>
+                        </div>
+                      </motion.button>
+                    </div>
+
+                    {submitting && (
+                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mt-4 text-sm text-[var(--text-light)]">
+                        <Loader2 className="w-4 h-4 animate-spin inline mr-2" /> Envoi en cours...
+                      </motion.p>
                     )}
                   </div>
                 )}
@@ -562,25 +570,19 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
         </div>
 
         {/* Footer */}
-        {!submitted && phase !== "type" && !(phase === "reveal" && !showPrice) && (
+        {!submitted && phase !== "type" && (
           <div className="px-6 py-4 border-t border-[var(--border)] flex gap-3 shrink-0 bg-white/50 backdrop-blur-sm">
             <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={goBackPhase}
               className="flex items-center gap-1 px-4 py-3 rounded-full border border-[var(--border)] text-[var(--text-light)] text-sm font-medium">
               <ArrowLeft className="w-4 h-4" /> Retour
             </motion.button>
-            {phase !== "reveal" ? (
+            {phase !== "reveal" && (
               <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={goNextPhase}
                 disabled={!canNext()}
                 className="btn-rose flex-1 flex items-center justify-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed">
                 Continuer <ArrowRight className="w-4 h-4" />
               </motion.button>
-            ) : showPrice ? (
-              <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={handleSubmit}
-                disabled={submitting}
-                className="btn-rose flex-1 flex items-center justify-center gap-2 disabled:opacity-50">
-                {submitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Envoi...</> : <>Recevoir mon devis <Check className="w-4 h-4" /></>}
-              </motion.button>
-            ) : null}
+            )}
           </div>
         )}
       </motion.div>
