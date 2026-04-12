@@ -6,7 +6,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Heart, Gem, Cake, Baby, Gift, Building2, Sparkles,
   ArrowRight, Phone, Star, ChevronRight, Check,
-  Mail, MapPin, Palette, X, PartyPopper,
+  Mail, MapPin, Palette, X, PartyPopper, Menu,
 } from "lucide-react";
 import { config, EVENT_TYPES, FORMULAS, SERVICES } from "@/lib/config";
 import DevisPopup from "@/components/DevisPopup";
@@ -78,6 +78,7 @@ function FloatingParticle({ delay, x, y, size }: { delay: number; x: string; y: 
 export default function Home() {
   const [showDevis, setShowDevis] = useState(false);
   const [devisType, setDevisType] = useState("");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Auto-open devis si ?devis=1 dans l'URL
   useEffect(() => {
@@ -106,7 +107,7 @@ export default function Home() {
           <motion.div className="flex items-center" whileHover={{ scale: 1.02 }}>
             <img src="/logo.png" alt={config.brand} className="h-14 sm:h-16" />
           </motion.div>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-3 sm:gap-5">
             <Link href="/portfolio" className="hidden md:block text-sm text-[var(--text-light)] hover:text-[var(--rose)] transition">Portfolio</Link>
             <Link href="/blog" className="hidden md:block text-sm text-[var(--text-light)] hover:text-[var(--rose)] transition">Blog</Link>
             <a href={`tel:${config.phoneIntl}`} className="hidden sm:flex items-center gap-2 text-sm text-[var(--text-light)] hover:text-[var(--rose)] transition">
@@ -121,8 +122,38 @@ export default function Home() {
             >
               Devis gratuit
             </motion.button>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden w-9 h-9 flex items-center justify-center text-[var(--text)]"
+              aria-label="Menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden border-t border-[var(--border)] bg-[var(--cream)] overflow-hidden"
+            >
+              <div className="px-6 py-4 flex flex-col gap-3">
+                <Link href="/portfolio" onClick={() => setMobileMenuOpen(false)} className="py-2 text-[var(--text)] font-medium hover:text-[var(--rose)]">Portfolio</Link>
+                <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="py-2 text-[var(--text)] font-medium hover:text-[var(--rose)]">Blog</Link>
+                <a href={`tel:${config.phoneIntl}`} className="py-2 text-[var(--text)] font-medium hover:text-[var(--rose)] flex items-center gap-2">
+                  <Phone className="w-4 h-4" /> {config.phone}
+                </a>
+                <a href={`mailto:${config.email}`} className="py-2 text-[var(--text)] font-medium hover:text-[var(--rose)] flex items-center gap-2">
+                  <Mail className="w-4 h-4" /> {config.email}
+                </a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.nav>
 
       {/* Hero */}
