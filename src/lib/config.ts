@@ -22,7 +22,7 @@ export const config = {
   freeKmRadius: 20,
 
   // Zones
-  zones: ["Arras", "Lens", "Douai", "Bethune", "Cambrai", "Lille", "Valenciennes", "Henin-Beaumont"],
+  zones: ["Arras", "Lens", "Douai", "Béthune", "Cambrai", "Lille", "Valenciennes", "Hénin-Beaumont"],
 
   // Domaine
   domain: "evenmia.fr",
@@ -36,9 +36,9 @@ export const config = {
 // Types d'événements
 export const EVENT_TYPES = [
   { id: "mariage", label: "Mariage", icon: "Heart", description: "Le plus beau jour de votre vie, organisé dans les moindres détails" },
-  { id: "fiançailles", label: "Fiançailles", icon: "Gem", description: "Une demande ou une fête de fiançailles inoubliable" },
+  { id: "fiancailles", label: "Fiançailles", icon: "Gem", description: "Une demande ou une fête de fiançailles inoubliable" },
   { id: "anniversaire", label: "Anniversaire", icon: "Cake", description: "Fêtes d'anniversaire pour enfants et adultes" },
-  { id: "baptême", label: "Baptême", icon: "Baby", description: "Un moment sacré célébré avec élégance" },
+  { id: "bapteme", label: "Baptême", icon: "Baby", description: "Un moment sacré célébré avec élégance" },
   { id: "baby-shower", label: "Baby Shower", icon: "Gift", description: "Célébrez l'arrivée de bébé avec style" },
   { id: "autre", label: "Autre événement", icon: "Sparkles", description: "Retraite, pot de départ, garden party, soirée privée..." },
 ] as const;
@@ -48,7 +48,7 @@ export const FORMULAS = [
   {
     id: "essentiel",
     name: "Essentiel",
-    price: "A partir de 500",
+    price: "À partir de 500",
     description: "Coordination jour-J",
     popular: false,
     features: [
@@ -61,11 +61,11 @@ export const FORMULAS = [
   {
     id: "premium",
     name: "Premium",
-    price: "A partir de 1 200",
+    price: "À partir de 1 200",
     description: "Organisation partielle",
     features: [
       "Tout l'Essentiel +",
-      "Recherche et selection des prestataires",
+      "Recherche et sélection des prestataires",
       "Décoration et mise en place",
       "2 rendez-vous de suivi",
       "Coordination jour-J (12h)",
@@ -85,21 +85,21 @@ export const FORMULAS = [
       "Rendez-vous illimites",
       "Coordination jour-J complete",
       "Gestion des invitations et RSVP",
-      "Accompagnement de 6 a 12 mois",
+      "Accompagnement de 6 à 12 mois",
     ],
   },
 ] as const;
 
 // Services additionnels
 export const SERVICES = [
-  { id: "décoration", label: "Décoration & scenographie", price: "Sur devis" },
+  { id: "decoration", label: "Décoration & scénographie", price: "Sur devis" },
   { id: "traiteur", label: "Recherche traiteur", price: "Inclus Premium+" },
-  { id: "photo", label: "Recherche photographe/videaste", price: "Inclus Premium+" },
+  { id: "photo", label: "Recherche photographe/vidéaste", price: "Inclus Premium+" },
   { id: "animation", label: "Animation & DJ", price: "Sur devis" },
   { id: "fleurs", label: "Compositions florales", price: "Sur devis" },
   { id: "faire-part", label: "Faire-part & papeterie", price: "Sur devis" },
   { id: "lieu", label: "Recherche de lieu", price: "Inclus Premium+" },
-  { id: "candy-bar", label: "Candy bar & sweet table", price: "A partir de 150€" },
+  { id: "candy-bar", label: "Candy bar & sweet table", price: "À partir de 150€" },
 ] as const;
 
 export type EventType = typeof EVENT_TYPES[number]["id"];

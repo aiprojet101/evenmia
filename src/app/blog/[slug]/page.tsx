@@ -87,7 +87,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* CTA */}
         <div className="mt-16 card-light p-8 text-center bg-white">
           <h3 className="text-xl font-bold text-[var(--text)] mb-2">Besoin d&apos;aide pour votre événement ?</h3>
-          <p className="text-[var(--text-light)] mb-6">Devis gratuit en 2 minutes. Reponse sous 24h.</p>
+          <p className="text-[var(--text-light)] mb-6">Devis gratuit en 2 minutes. Réponse sous 24h.</p>
           <Link href="/devis" className="btn-rose inline-flex items-center gap-2">
             Demander un devis <ArrowRight className="w-4 h-4" />
           </Link>

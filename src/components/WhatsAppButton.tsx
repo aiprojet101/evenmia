@@ -22,11 +22,11 @@ export function buildDevisMessage(data: {
 Je souhaite un devis pour :
 - Événement : ${data.eventType}
 - Formule : ${data.formula}
-- Date souhaitee : ${data.date}
-- Nombre d'invites : ${data.guests}
+- Date souhaitée : ${data.date}
+- Nombre d'invités : ${data.guests}
 - Lieu : ${data.location}
 - Nom : ${data.name}
-- Telephone : ${data.phone}
+- Téléphone : ${data.phone}
 ${data.notes ? `- Notes : ${data.notes}` : ""}
 
 Merci !`;

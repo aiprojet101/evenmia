@@ -34,7 +34,7 @@ export default async function BlogPage() {
         </div>
 
         {posts.length === 0 ? (
-          <p className="text-center text-[var(--text-lighter)]">Articles a venir...</p>
+          <p className="text-center text-[var(--text-lighter)]">Articles à venir...</p>
         ) : (
           <div className="space-y-6">
             {posts.map((post) => (
