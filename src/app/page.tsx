@@ -434,6 +434,7 @@ export default function Home() {
               { src: "/anais-decorations/bapteme-louis.png", title: "Baptême de Louis", category: "Baptême" },
               { src: "/anais-decorations/dragees-bapteme-louis.png", title: "Dragées — Baptême Louis", category: "Confection" },
               { src: "/anais-decorations/table-bougies-mauve.png", title: "Table aux bougies mauves", category: "Réception" },
+              { src: "/portfolio/mariage-chateau.png", title: "Réception au château", category: "Mariage" },
             ].map((item, i) => (
               <AnimatedCard key={item.src} index={i}>
                 <motion.div whileHover={{ y: -6, scale: 1.02 }} className="card-light overflow-hidden group cursor-pointer">

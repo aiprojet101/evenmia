@@ -37,7 +37,6 @@ const PORTFOLIO_ITEMS = [
   { id: 40, title: "Décoration guirlandes lumineuses", category: "fiancailles", description: "Jardin illuminé de guirlandes pour une soirée magique.", guests: 35, image: "https://images.unsplash.com/photo-1464047736614-af63643285bf?w=800&h=500&fit=crop" },
 
   // ── ANNIVERSAIRES ──
-  { id: 42, title: "Gâteau d'anniversaire", category: "anniversaire", description: "Gâteau spectaculaire avec bougies et décoration sur-mesure.", guests: 40, image: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=800&h=500&fit=crop" },
   { id: 46, title: "Bar à cocktails animé", category: "anniversaire", description: "Barman professionnel préparant des cocktails personnalisés.", guests: 45, image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&h=500&fit=crop" },
   { id: 50, title: "Fête surprise décoration", category: "anniversaire", description: "Salle décorée pour une fête surprise inoubliable.", guests: 40, image: "https://images.unsplash.com/photo-1496843916299-590492c751f4?w=800&h=500&fit=crop" },
 
