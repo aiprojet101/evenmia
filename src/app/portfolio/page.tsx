@@ -7,7 +7,7 @@ import { config } from "@/lib/config";
 
 const PORTFOLIO_ITEMS = [
   // ── MARIAGES ──
-  { id: 1, title: "Table champetre en plein air", category: "mariage", description: "Longue table en bois avec guirlandes lumineuses, fleurs des champs et bougies.", guests: 120, image: "https://images.unsplash.com/photo-1507504031003-b417219a0fde?w=800&h=500&fit=crop" },
+  { id: 1, title: "Table champetre en plein air", category: "mariage", description: "Longue table en bois avec guirlandes lumineuses, fleurs des champs et bougies.", guests: 120, image: "https://ai-toolkit-generations.imgix.net/content/-t-e-x-t_-t-o_-i-m-a-g-e-v1/media__9/image-31b30a1a-1273-429f-8e53-3b256a9f5a41.png?auto=format%2Ccompress&cs=srgb&w=1440&fit=max&s=1a801ae694b005dc433f776392c52980" },
   { id: 2, title: "Arche florale ceremonie", category: "mariage", description: "Arche de ceremonie ornee de roses et eucalyptus dans un jardin.", guests: 80, image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&h=500&fit=crop" },
   { id: 3, title: "Reception au chateau", category: "mariage", description: "Salle de reception elegante dans un chateau du Nord.", guests: 150, image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&h=500&fit=crop" },
   { id: 4, title: "Decoration table de mariage", category: "mariage", description: "Centre de table avec compositions florales, bougies et touches dorees.", guests: 100, image: "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=800&h=500&fit=crop" },
