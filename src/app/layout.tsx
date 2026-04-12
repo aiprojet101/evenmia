@@ -17,8 +17,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const title = `${config.brand} — Organisatrice d'evenements | ${config.region}`;
-const description = `Organisation d'evenements sur-mesure : mariages, fiancailles, anniversaires, baptemes, seminaires. Devis en ligne gratuit. ${config.city} et ${config.region}.`;
+const title = `${config.brand} — Organisatrice d'événements | ${config.region}`;
+const description = `Organisation d'événements sur-mesure : mariages, fiançailles, anniversaires, baptêmes, séminaires. Devis en ligne gratuit. ${config.city} et ${config.region}.`;
 
 export const metadata: Metadata = {
   title,
@@ -28,12 +28,12 @@ export const metadata: Metadata = {
     apple: "/favicon.png",
   },
   keywords: [
-    `organisatrice evenements ${config.city}`,
+    `organisatrice événements ${config.city}`,
     `wedding planner ${config.region}`,
     `organisation mariage ${config.department}`,
-    `decoration evenement`,
-    `devis evenementiel en ligne`,
-    ...config.zones.map(z => `evenements ${z}`),
+    `décoration événement`,
+    `devis événementiel en ligne`,
+    ...config.zones.map(z => `événements ${z}`),
   ],
   openGraph: {
     title,

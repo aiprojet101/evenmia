@@ -3,8 +3,8 @@ import { ArrowLeft } from "lucide-react";
 import { config } from "@/lib/config";
 
 export const metadata = {
-  title: `Conditions generales — ${config.brand}`,
-  description: `Conditions generales de vente et de prestation ${config.brand}`,
+  title: `Conditions générales — ${config.brand}`,
+  description: `Conditions générales de vente et de prestation ${config.brand}`,
 };
 
 export default function CGV() {
@@ -20,20 +20,20 @@ export default function CGV() {
       </div>
 
       <div className="max-w-3xl mx-auto px-6 py-16">
-        <h1 className="text-3xl font-bold mb-8 text-[var(--text)]">Conditions generales de vente</h1>
+        <h1 className="text-3xl font-bold mb-8 text-[var(--text)]">Conditions générales de vente</h1>
 
         <div className="prose prose-sm max-w-none space-y-6 text-[var(--text-light)]">
           <section>
             <h2 className="text-lg font-bold text-[var(--text)]">Article 1 — Objet</h2>
             <p>
-              Les presentes conditions generales regissent les prestations d'organisation d'evenements proposees par {config.brand}, micro-entreprise basee a {config.city} ({config.postalCode}).
+              Les présentes conditions générales régissent les prestations d'organisation d'événements proposées par {config.brand}, micro-entreprise basée a {config.city} ({config.postalCode}).
             </p>
           </section>
 
           <section>
             <h2 className="text-lg font-bold text-[var(--text)]">Article 2 — Prestations</h2>
             <p>
-              {config.brand} propose des services d'organisation, coordination et decoration d'evenements prives et professionnels : mariages, fiancailles, anniversaires, baptemes, baby showers, seminaires d'entreprise et tout autre evenement sur-mesure.
+              {config.brand} propose des services d'organisation, coordinationion et décoration d'événements privés et professionnels : mariages, fiançailles, anniversaires, baptêmes, baby showers, séminaires d'entreprise et tout autre événement sur-mesure.
             </p>
           </section>
 
@@ -47,7 +47,7 @@ export default function CGV() {
           <section>
             <h2 className="text-lg font-bold text-[var(--text)]">Article 4 — Tarifs et paiement</h2>
             <p>
-              Les prix sont indiques en euros TTC (TVA non applicable, art. 293 B du CGI). Un acompte de 30% du montant total est exige a la commande. Le solde est du au plus tard 7 jours avant la date de l'evenement. Les frais de deplacement sont factures a {config.pricePerKm}€/km au-dela de {config.freeKmRadius} km depuis {config.city}.
+              Les prix sont indiqués en euros TTC (TVA non applicable, art. 293 B du CGI). Un acompte de 30% du montant total est exigé a la commande. Le solde est du au plus tard 7 jours avant la date de l'événement. Les frais de déplacement sont facturés a {config.pricePerKm}€/km au-dela de {config.freeKmRadius} km depuis {config.city}.
             </p>
           </section>
 
@@ -55,7 +55,7 @@ export default function CGV() {
             <h2 className="text-lg font-bold text-[var(--text)]">Article 5 — Annulation</h2>
             <p>
               En cas d'annulation par le client :<br />
-              — Plus de 60 jours avant l'evenement : remboursement de l'acompte moins 10% de frais de dossier.<br />
+              — Plus de 60 jours avant l'événement : remboursement de l'acompte moins 10% de frais de dossier.<br />
               — Entre 30 et 60 jours : l'acompte est conserve.<br />
               — Moins de 30 jours : la totalite du montant est due.<br />
               En cas de force majeure, les parties conviennent de trouver un accord amiable (report de date, avoir).
@@ -72,7 +72,7 @@ export default function CGV() {
           <section>
             <h2 className="text-lg font-bold text-[var(--text)]">Article 7 — Droit a l'image</h2>
             <p>
-              Sauf mention contraire ecrite du client, {config.brand} se reserve le droit d'utiliser les photos de l'evenement a des fins de promotion (portfolio, reseaux sociaux, site internet), en respectant la vie privee des participants.
+              Sauf mention contraire écrite du client, {config.brand} se réserve le droit d'utiliser les photos de l'événement a des fins de promotion (portfolio, réseaux sociaux, site internet), en respectant la vie privée des participants.
             </p>
           </section>
 

@@ -13,15 +13,15 @@ import DevisPopup from "@/components/DevisPopup";
 
 const TESTIMONIALS = [
   { name: "Sophie L.", text: "Anaïs a transformé notre mariage en un rêve éveillé. Chaque détail était parfait, du premier rendez-vous jusqu'à la dernière danse.", stars: 5, tag: "Mariage", initials: "SL" },
-  { name: "Julie & Marc", text: "Un baptême magnifique organisé en un mois seulement. Décoration sublime, coordination impeccable. On recommande à 200% !", stars: 5, tag: "Baptême", initials: "JM" },
-  { name: "Thomas R.", text: "Séminaire de 80 personnes géré sans stress. Nos collaborateurs en parlent encore. Merci Evenmia !", stars: 5, tag: "Séminaire CE", initials: "TR" },
+  { name: "Julie & Marc", text: "Un baptême magnifique organisé en un mois seulement. Décoration sublime, coordinationion impeccable. On recommande à 200% !", stars: 5, tag: "Baptême", initials: "JM" },
   { name: "Camille D.", text: "Ma baby shower était absolument magique. Anaïs a su capter exactement l'ambiance que je voulais.", stars: 5, tag: "Baby Shower", initials: "CD" },
+  { name: "Marie & Pierre", text: "Nos fiançailles étaient parfaites. Anaïs a pensé à tout, même aux petits détails auxquels on n'aurait pas pensé. Un vrai rayon de soleil !", stars: 5, tag: "Fiançailles", initials: "MP" },
 ];
 
 const STEPS = [
   { num: "01", title: "Racontez-moi", desc: "Répondez à quelques questions sur votre événement de rêve", icon: Heart },
   { num: "02", title: "Je crée vos décorations", desc: "Je conçois et réalise moi-même toutes vos décorations sur-mesure", icon: Palette },
-  { num: "03", title: "Je m'occupe de tout", desc: "Organisation, coordination, décoration — vous profitez pleinement", icon: Sparkles },
+  { num: "03", title: "Je m'occupe de tout", desc: "Organisation, coordinationion, décoration — vous profitez pleinement", icon: Sparkles },
 ];
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -413,7 +413,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Galerie decorations faites main */}
+      {/* Galerie décorations faites main */}
       <section className="py-24 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
@@ -427,13 +427,13 @@ export default function Home() {
           </AnimatedSection>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
-              { src: "/anais-decorations/anniversaire-louis.png", title: "Anniversaire Louis", category: "Anniversaire" },
-              { src: "/anais-decorations/anniversaire-louna-gateau.png", title: "Gâteau de Louna", category: "Anniversaire" },
-              { src: "/anais-decorations/anniversaire-louna-nature.png", title: "Déco nature & bois — Louna", category: "Anniversaire" },
-              { src: "/anais-decorations/baby-shower-sophie-hugue.png", title: "Baby Shower de Sophie & Hugues", category: "Baby Shower" },
-              { src: "/anais-decorations/bapteme-louis.png", title: "Baptême de Louis", category: "Baptême" },
-              { src: "/anais-decorations/dragees-bapteme-louis.png", title: "Dragées — Baptême Louis", category: "Confection" },
-              { src: "/anais-decorations/table-bougies-mauve.png", title: "Table aux bougies mauves", category: "Réception" },
+              { src: "/anais-décorations/anniversaire-louis.png", title: "Anniversaire Louis", category: "Anniversaire" },
+              { src: "/anais-décorations/anniversaire-louna-gateau.png", title: "Gâteau de Louna", category: "Anniversaire" },
+              { src: "/anais-décorations/anniversaire-louna-nature.png", title: "Déco nature & bois — Louna", category: "Anniversaire" },
+              { src: "/anais-décorations/baby-shower-sophie-hugue.png", title: "Baby Shower de Sophie & Hugues", category: "Baby Shower" },
+              { src: "/anais-décorations/baptême-louis.png", title: "Baptême de Louis", category: "Baptême" },
+              { src: "/anais-décorations/dragees-baptême-louis.png", title: "Dragées — Baptême Louis", category: "Confection" },
+              { src: "/anais-décorations/table-bougies-mauve.png", title: "Table aux bougies mauves", category: "Réception" },
               { src: "/portfolio/mariage-chateau.png", title: "Réception au château", category: "Mariage" },
             ].map((item, i) => (
               <AnimatedCard key={item.src} index={i}>

@@ -7,13 +7,13 @@ import { config } from "@/lib/config";
 
 const PORTFOLIO_ITEMS = [
   // ── PHOTOS PERSO D'ANAÏS ──
-  { id: 101, title: "Anniversaire Louis", category: "anniversaire", description: "Décoration sur-mesure imaginée et réalisée par Anaïs.", guests: 25, image: "/anais-decorations/anniversaire-louis.png" },
-  { id: 102, title: "Gâteau de Louna", category: "anniversaire", description: "Gâteau personnalisé pour l'anniversaire de Louna.", guests: 20, image: "/anais-decorations/anniversaire-louna-gateau.png" },
-  { id: 103, title: "Déco nature & bois — Louna", category: "anniversaire", description: "Anniversaire aux tons naturels, bois et végétal.", guests: 20, image: "/anais-decorations/anniversaire-louna-nature.png" },
-  { id: 104, title: "Baby Shower — Sophie & Hugues", category: "baby-shower", description: "Baby shower intimiste avec décoration entièrement faite main.", guests: 15, image: "/anais-decorations/baby-shower-sophie-hugue.png" },
-  { id: 105, title: "Baptême de Louis", category: "bapteme", description: "Baptême élégant avec décoration sur-mesure.", guests: 40, image: "/anais-decorations/bapteme-louis.png" },
-  { id: 106, title: "Confection de dragées — Baptême Louis", category: "bapteme", description: "Dragées faites main, emballage personnalisé pour chaque invité.", guests: 40, image: "/anais-decorations/dragees-bapteme-louis.png" },
-  { id: 107, title: "Table aux bougies mauves", category: "mariage", description: "Décoration de table avec bougies et tons mauves pour un repas.", guests: 30, image: "/anais-decorations/table-bougies-mauve.png" },
+  { id: 101, title: "Anniversaire Louis", category: "anniversaire", description: "Décoration sur-mesure imaginée et réalisée par Anaïs.", guests: 25, image: "/anais-décorations/anniversaire-louis.png" },
+  { id: 102, title: "Gâteau de Louna", category: "anniversaire", description: "Gâteau personnalisé pour l'anniversaire de Louna.", guests: 20, image: "/anais-décorations/anniversaire-louna-gateau.png" },
+  { id: 103, title: "Déco nature & bois — Louna", category: "anniversaire", description: "Anniversaire aux tons naturels, bois et végétal.", guests: 20, image: "/anais-décorations/anniversaire-louna-nature.png" },
+  { id: 104, title: "Baby Shower — Sophie & Hugues", category: "baby-shower", description: "Baby shower intimiste avec décoration entièrement faite main.", guests: 15, image: "/anais-décorations/baby-shower-sophie-hugue.png" },
+  { id: 105, title: "Baptême de Louis", category: "baptême", description: "Baptême élégant avec décoration sur-mesure.", guests: 40, image: "/anais-décorations/baptême-louis.png" },
+  { id: 106, title: "Confection de dragées — Baptême Louis", category: "baptême", description: "Dragées faites main, emballage personnalisé pour chaque invité.", guests: 40, image: "/anais-décorations/dragees-baptême-louis.png" },
+  { id: 107, title: "Table aux bougies mauves", category: "mariage", description: "Décoration de table avec bougies et tons mauves pour un repas.", guests: 30, image: "/anais-décorations/table-bougies-mauve.png" },
 
   // ── MARIAGES ──
   { id: 1, title: "Table champêtre en plein air", category: "mariage", description: "Longue table en bois avec guirlandes lumineuses, fleurs des champs et bougies.", guests: 120, image: "https://ai-toolkit-generations.imgix.net/content/-t-e-x-t_-t-o_-i-m-a-g-e-v1/media__9/image-31b30a1a-1273-429f-8e53-3b256a9f5a41.png?auto=format%2Ccompress&cs=srgb&w=1440&fit=max&s=1a801ae694b005dc433f776392c52980" },
@@ -27,14 +27,14 @@ const PORTFOLIO_ITEMS = [
   { id: 10, title: "Sortie de cérémonie — confettis", category: "mariage", description: "Les mariés sous une pluie de pétales et confettis.", guests: 80, image: "https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=800&h=500&fit=crop" },
 
   // ── BAPTÊMES ──
-  { id: 14, title: "Arche de ballons", category: "bapteme", description: "Arche de ballons pastel à l'entrée de la salle.", guests: 45, image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=500&fit=crop" },
-  { id: 16, title: "Réception jardin baptême", category: "bapteme", description: "Réception en plein air avec nappes blanches et fleurs.", guests: 55, image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=500&fit=crop" },
-  { id: 18, title: "Décoration florale douce", category: "bapteme", description: "Compositions florales pastel avec pivoines et hortensias.", guests: 60, image: "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=800&h=500&fit=crop" },
+  { id: 14, title: "Arche de ballons", category: "baptême", description: "Arche de ballons pastel à l'entrée de la salle.", guests: 45, image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=500&fit=crop" },
+  { id: 16, title: "Réception jardin baptême", category: "baptême", description: "Réception en plein air avec nappes blanches et fleurs.", guests: 55, image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=500&fit=crop" },
+  { id: 18, title: "Décoration florale douce", category: "baptême", description: "Compositions florales pastel avec pivoines et hortensias.", guests: 60, image: "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=800&h=500&fit=crop" },
 
   // ── FIANÇAILLES ──
-  { id: 34, title: "Champagne et célébration", category: "fiancailles", description: "Toast au champagne entre amis pour célébrer la nouvelle.", guests: 20, image: "https://images.unsplash.com/photo-1470338745628-171cf53de3a8?w=800&h=500&fit=crop" },
-  { id: 37, title: "Photoshoot couple", category: "fiancailles", description: "Séance photo en couple pour immortaliser le moment.", guests: 2, image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&h=500&fit=crop" },
-  { id: 40, title: "Décoration guirlandes lumineuses", category: "fiancailles", description: "Jardin illuminé de guirlandes pour une soirée magique.", guests: 35, image: "https://images.unsplash.com/photo-1464047736614-af63643285bf?w=800&h=500&fit=crop" },
+  { id: 34, title: "Champagne et célébration", category: "fiançailles", description: "Toast au champagne entre amis pour célébrer la nouvelle.", guests: 20, image: "https://images.unsplash.com/photo-1470338745628-171cf53de3a8?w=800&h=500&fit=crop" },
+  { id: 37, title: "Photoshoot couple", category: "fiançailles", description: "Séance photo en couple pour immortaliser le moment.", guests: 2, image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&h=500&fit=crop" },
+  { id: 40, title: "Décoration guirlandes lumineuses", category: "fiançailles", description: "Jardin illuminé de guirlandes pour une soirée magique.", guests: 35, image: "https://images.unsplash.com/photo-1464047736614-af63643285bf?w=800&h=500&fit=crop" },
 
   // ── ANNIVERSAIRES ──
   { id: 46, title: "Bar à cocktails animé", category: "anniversaire", description: "Barman professionnel préparant des cocktails personnalisés.", guests: 45, image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&h=500&fit=crop" },
@@ -49,9 +49,9 @@ const PORTFOLIO_ITEMS = [
 const CATEGORIES = [
   { id: "tous", label: "Tous", icon: Sparkles },
   { id: "mariage", label: "Mariages", icon: Heart },
-  { id: "fiancailles", label: "Fiançailles", icon: Gem },
+  { id: "fiançailles", label: "Fiançailles", icon: Gem },
   { id: "anniversaire", label: "Anniversaires", icon: Cake },
-  { id: "bapteme", label: "Baptêmes", icon: Baby },
+  { id: "baptême", label: "Baptêmes", icon: Baby },
   { id: "baby-shower", label: "Baby Showers", icon: Gift },
 ];
 
@@ -81,7 +81,7 @@ export default function PortfolioPage() {
             Nos <span className="text-rose-gradient">realisations</span>
           </h1>
           <p className="text-[var(--text-light)] max-w-lg mx-auto">
-            Chaque evenement est unique. Decouvrez quelques-unes de nos creations.
+            Chaque événement est unique. découvrez quelques-unes de nos créations.
           </p>
         </div>
 
@@ -131,7 +131,7 @@ export default function PortfolioPage() {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <p className="text-[var(--text-light)] mb-6">Votre evenement pourrait etre le prochain !</p>
+          <p className="text-[var(--text-light)] mb-6">Votre événement pourrait être le prochain !</p>
           <Link href="/devis" className="btn-rose inline-flex items-center gap-2">
             Demander un devis gratuit <ArrowRight className="w-4 h-4" />
           </Link>

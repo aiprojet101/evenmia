@@ -1,10 +1,10 @@
-// Configuration Evenmia — Organisation d'evenements
+// Configuration Evenmia — Organisation d'événements
 
 export const config = {
   // Identite
   brand: "Evenmia",
   brandShort: "EVENMIA",
-  tagline: "Votre organisatrice d'evenements sur-mesure",
+  tagline: "Votre organisatrice d'événements sur-mesure",
   city: "Arras",
   region: "Hauts-de-France",
   department: "Pas-de-Calais",
@@ -17,7 +17,7 @@ export const config = {
   email: "contact@evenmia.fr",
   instagram: "https://instagram.com/evenmia",
 
-  // Frais de deplacement
+  // Frais de déplacement
   pricePerKm: 0.55,
   freeKmRadius: 20,
 
@@ -36,9 +36,9 @@ export const config = {
 // Types d'événements
 export const EVENT_TYPES = [
   { id: "mariage", label: "Mariage", icon: "Heart", description: "Le plus beau jour de votre vie, organisé dans les moindres détails" },
-  { id: "fiancailles", label: "Fiançailles", icon: "Gem", description: "Une demande ou une fête de fiançailles inoubliable" },
+  { id: "fiançailles", label: "Fiançailles", icon: "Gem", description: "Une demande ou une fête de fiançailles inoubliable" },
   { id: "anniversaire", label: "Anniversaire", icon: "Cake", description: "Fêtes d'anniversaire pour enfants et adultes" },
-  { id: "bapteme", label: "Baptême", icon: "Baby", description: "Un moment sacré célébré avec élégance" },
+  { id: "baptême", label: "Baptême", icon: "Baby", description: "Un moment sacré célébré avec élégance" },
   { id: "baby-shower", label: "Baby Shower", icon: "Gift", description: "Célébrez l'arrivée de bébé avec style" },
   { id: "autre", label: "Autre événement", icon: "Sparkles", description: "Retraite, pot de départ, garden party, soirée privée..." },
 ] as const;
@@ -66,7 +66,7 @@ export const FORMULAS = [
     features: [
       "Tout l'Essentiel +",
       "Recherche et selection des prestataires",
-      "Decoration et mise en place",
+      "Décoration et mise en place",
       "2 rendez-vous de suivi",
       "Coordination jour-J (12h)",
     ],
@@ -92,7 +92,7 @@ export const FORMULAS = [
 
 // Services additionnels
 export const SERVICES = [
-  { id: "decoration", label: "Decoration & scenographie", price: "Sur devis" },
+  { id: "décoration", label: "Décoration & scenographie", price: "Sur devis" },
   { id: "traiteur", label: "Recherche traiteur", price: "Inclus Premium+" },
   { id: "photo", label: "Recherche photographe/videaste", price: "Inclus Premium+" },
   { id: "animation", label: "Animation & DJ", price: "Sur devis" },

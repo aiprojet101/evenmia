@@ -117,7 +117,7 @@ export default function DevisPopup({ onClose, prefillType = "" }: Props) {
     }
     if (phase === "date") return true;
     if (phase === "funnel") return true;
-    if (phase === "contact") return !!(name && phone);
+    if (phase === "contact") return !!(name && phone && email);
     return true;
   };
 
@@ -345,8 +345,8 @@ Merci !`);
                 {/* Phase: Event Type */}
                 {phase === "type" && (
                   <div>
-                    <h2 className="text-xl font-bold text-[var(--text)] mb-1">Quel evenement preparons-nous ?</h2>
-                    <p className="text-sm text-[var(--text-light)] mb-5">Chaque evenement a son propre parcours de questions</p>
+                    <h2 className="text-xl font-bold text-[var(--text)] mb-1">Quel événement préparons-nous ?</h2>
+                    <p className="text-sm text-[var(--text-light)] mb-5">Chaque événement a son propre parcours de questions</p>
                     <div className="grid grid-cols-2 gap-2.5">
                       {EVENT_TYPES.map(evt => {
                         const Icon = ICON_MAP[evt.icon] || Sparkles;
@@ -371,7 +371,7 @@ Merci !`);
                 {/* Phase: Date */}
                 {phase === "date" && (
                   <div>
-                    <h2 className="text-xl font-bold text-[var(--text)] mb-1">Quand aura lieu l'evenement ?</h2>
+                    <h2 className="text-xl font-bold text-[var(--text)] mb-1">Quand aura lieu l'événement ?</h2>
                     <p className="text-sm text-[var(--text-light)] mb-5">La saison influence les tarifs des prestataires</p>
                     <input className="input-light w-full mb-3" type="date" value={date}
                       onChange={(e) => setDate(e.target.value)} min={new Date().toISOString().split("T")[0]} />
@@ -390,7 +390,7 @@ Merci !`);
                     )}
 
                     <div className="mt-6">
-                      <label className="text-sm font-medium text-[var(--text)] mb-2 block">Lieu de l'evenement</label>
+                      <label className="text-sm font-medium text-[var(--text)] mb-2 block">Lieu de l'événement</label>
                       <div className="relative">
                         <MapPin className="absolute left-4 top-3 w-4 h-4 text-[var(--rose)]" />
                         <input
@@ -448,8 +448,8 @@ Merci !`);
                       {[
                         { emoji: "🎯", title: "Un seul interlocuteur", desc: "Anais s'occupe de tout de A a Z. Vous profitez, elle gere." },
                         { emoji: "💰", title: "Meilleurs tarifs prestataires", desc: "Grace a notre reseau local, on negocie les meilleurs prix pour vous." },
-                        { emoji: "😌", title: "Zero stress", desc: "Retroplanning, coordination jour-J, gestion des imprevus — on anticipe tout." },
-                        { emoji: "✨", title: "Sur-mesure uniquement", desc: "Pas de formule toute faite. Chaque evenement est unique, comme vous." },
+                        { emoji: "😌", title: "Zéro stress", desc: "Rétroplanning, coordinationion jour-J, gestion des imprévus — j'anticipe tout." },
+                        { emoji: "✨", title: "Sur-mesure uniquement", desc: "Pas de formule toute faite. Chaque événement est unique, comme vous." },
                         { emoji: "📍", title: "Expertise locale", desc: `On connait les meilleurs lieux et prestataires d'${config.city} et environs.` },
                       ].map((item, i) => (
                         <motion.div
@@ -475,7 +475,7 @@ Merci !`);
                       className="mt-6 bg-[var(--sage)]/10 rounded-xl p-4 text-center"
                     >
                       <p className="text-sm font-medium text-[var(--text)]">
-                        Plus de 50 evenements organises
+                        Plus de 50 événements organisés
                       </p>
                       <div className="flex justify-center gap-0.5 mt-1">
                         {[1,2,3,4,5].map(i => (
@@ -497,10 +497,10 @@ Merci !`);
                         <input className="input-light" placeholder="Votre nom *" value={name} onChange={(e) => setName(e.target.value)} />
                       </motion.div>
                       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-                        <input className="input-light" type="tel" placeholder="Telephone *" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                        <input className="input-light" type="tel" placeholder="Téléphone *" value={phone} onChange={(e) => setPhone(e.target.value)} />
                       </motion.div>
                       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-                        <input className="input-light" type="email" placeholder="Email (optionnel)" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input className="input-light" type="email" placeholder="Email *" value={email} onChange={(e) => setEmail(e.target.value)} />
                       </motion.div>
                       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
                         <textarea className="input-light" rows={3} placeholder="Autre chose a nous dire ?" value={notes} onChange={(e) => setNotes(e.target.value)} />

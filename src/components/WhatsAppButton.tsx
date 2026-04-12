@@ -20,7 +20,7 @@ export function buildDevisMessage(data: {
   return `Bonjour Evenmia !
 
 Je souhaite un devis pour :
-- Evenement : ${data.eventType}
+- Événement : ${data.eventType}
 - Formule : ${data.formula}
 - Date souhaitee : ${data.date}
 - Nombre d'invites : ${data.guests}
@@ -33,7 +33,7 @@ Merci !`;
 }
 
 export default function WhatsAppButton() {
-  const url = buildWhatsAppUrl("Bonjour ! Je souhaite organiser un evenement et j'aimerais avoir plus d'informations.");
+  const url = buildWhatsAppUrl("Bonjour ! Je souhaite organiser un événement et j'aimerais avoir plus d'informations.");
 
   return (
     <a

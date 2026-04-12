@@ -1,4 +1,4 @@
-// Questionnaire intelligent par type d'evenement
+// Questionnaire intelligent par type d'événement
 // Chaque type a son propre parcours de questions adaptatives
 
 export interface QuestionOption {
@@ -32,25 +32,25 @@ export interface QuestionStep {
 // =============================================================================
 export const MARIAGE_STEPS: QuestionStep[] = [
   {
-    id: "ceremonie",
-    question: "Quel type de ceremonie ?",
-    subtitle: "Chaque ceremonie a ses specificites et son cout",
+    id: "cérémonie",
+    question: "Quel type de cérémonie ?",
+    subtitle: "Chaque cérémonie a ses specificites et son cout",
     type: "single",
     autoAdvance: true,
     options: [
       { id: "civile", label: "Civile uniquement", emoji: "🏛️" },
       { id: "religieuse-civile", label: "Religieuse + civile", emoji: "⛪" },
-      { id: "laique-civile", label: "Laique + civile", emoji: "🌿", price: 300, priceNote: "Officiant + decor ceremonie" },
+      { id: "laique-civile", label: "Laique + civile", emoji: "🌿", price: 300, priceNote: "Officiant + decor cérémonie" },
       { id: "mixte", label: "Mixte (plusieurs rites)", emoji: "🕊️", price: 500 },
     ],
   },
   {
     id: "religion",
     question: "Quelle confession ?",
-    subtitle: "Pour adapter la decoration et le deroulement",
+    subtitle: "Pour adapter la décoration et le deroulement",
     type: "single",
     autoAdvance: true,
-    showIf: (a) => a.ceremonie === "religieuse-civile" || a.ceremonie === "mixte",
+    showIf: (a) => a.cérémonie === "religieuse-civile" || a.cérémonie === "mixte",
     options: [
       { id: "catholique", label: "Catholique", emoji: "✝️" },
       { id: "protestante", label: "Protestante", emoji: "✝️" },
@@ -72,9 +72,9 @@ export const MARIAGE_STEPS: QuestionStep[] = [
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "oui", label: "Oui, c'est reserve", emoji: "✅" },
+      { id: "oui", label: "Oui, c'est réserve", emoji: "✅" },
       { id: "en-recherche", label: "Non, aidez-moi a trouver", emoji: "🔍", price: 200 },
-      { id: "idee", label: "J'ai une idee mais pas reserve", emoji: "💭" },
+      { id: "idee", label: "J'ai une idee mais pas réserve", emoji: "💭" },
     ],
   },
   {
@@ -95,7 +95,7 @@ export const MARIAGE_STEPS: QuestionStep[] = [
   },
   {
     id: "meme-lieu",
-    question: "Ceremonie et reception au meme endroit ?",
+    question: "Cérémonie et reception au meme endroit ?",
     subtitle: "Deux lieux = navettes pour les invites",
     type: "single",
     autoAdvance: true,
@@ -147,7 +147,7 @@ export const MARIAGE_STEPS: QuestionStep[] = [
   },
   {
     id: "deco-style",
-    question: "Quel style de decoration ?",
+    question: "Quel style de décoration ?",
     subtitle: "Pour creer l'ambiance qui vous ressemble",
     type: "single",
     autoAdvance: true,
@@ -162,12 +162,12 @@ export const MARIAGE_STEPS: QuestionStep[] = [
   },
   {
     id: "deco-elements",
-    question: "Quels elements de decoration ?",
+    question: "Quels elements de décoration ?",
     subtitle: "Selectionnez tout ce qui vous interesse",
     type: "multi",
     options: [
       { id: "centres-table", label: "Centres de table floraux", emoji: "💐", price: 150 },
-      { id: "arche", label: "Arche de ceremonie", emoji: "🌸", price: 200 },
+      { id: "arche", label: "Arche de cérémonie", emoji: "🌸", price: 200 },
       { id: "guirlandes", label: "Guirlandes lumineuses", emoji: "💡", price: 80 },
       { id: "bougies", label: "Bougies / Photophores", emoji: "🕯️", price: 60 },
       { id: "drapes", label: "Drapes / Voilages", emoji: "🎀", price: 150 },
@@ -200,7 +200,7 @@ export const MARIAGE_STEPS: QuestionStep[] = [
     options: [
       { id: "journee", label: "Journee complete", emoji: "📸", price: 200, priceNote: "Coordination photographe" },
       { id: "demi", label: "Demi-journee", emoji: "📷", price: 100 },
-      { id: "ceremonie", label: "Ceremonie uniquement", emoji: "📷", price: 50 },
+      { id: "cérémonie", label: "Cérémonie uniquement", emoji: "📷", price: 50 },
       { id: "non", label: "Pas de photographe pro", emoji: "❌" },
     ],
   },
@@ -224,7 +224,7 @@ export const MARIAGE_STEPS: QuestionStep[] = [
     options: [
       { id: "dj", label: "DJ", emoji: "🎧", price: 100 },
       { id: "orchestre", label: "Groupe / Orchestre live", emoji: "🎵", price: 300 },
-      { id: "dj-live", label: "DJ + musicien ceremonie", emoji: "🎶", price: 200 },
+      { id: "dj-live", label: "DJ + musicien cérémonie", emoji: "🎶", price: 200 },
       { id: "playlist", label: "Playlist perso", emoji: "📱" },
     ],
   },
@@ -427,7 +427,7 @@ export const ANNIVERSAIRE_STEPS: QuestionStep[] = [
   },
   {
     id: "deco",
-    question: "Niveau de decoration ?",
+    question: "Niveau de décoration ?",
     type: "single",
     autoAdvance: true,
     options: [
@@ -451,22 +451,22 @@ export const ANNIVERSAIRE_STEPS: QuestionStep[] = [
 // =============================================================================
 export const BAPTEME_STEPS: QuestionStep[] = [
   {
-    id: "type-bapteme",
-    question: "Quel type de bapteme ?",
+    id: "type-baptême",
+    question: "Quel type de baptême ?",
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "religieux", label: "Bapteme religieux", emoji: "⛪" },
-      { id: "civil", label: "Bapteme civil (republicain)", emoji: "🏛️" },
+      { id: "religieux", label: "Baptême religieux", emoji: "⛪" },
+      { id: "civil", label: "Baptême civil (republicain)", emoji: "🏛️" },
       { id: "les-deux", label: "Les deux", emoji: "🕊️", price: 100 },
     ],
   },
   {
-    id: "religion-bapteme",
+    id: "religion-baptême",
     question: "Quelle confession ?",
     type: "single",
     autoAdvance: true,
-    showIf: (a) => a["type-bapteme"] === "religieux" || a["type-bapteme"] === "les-deux",
+    showIf: (a) => a["type-baptême"] === "religieux" || a["type-baptême"] === "les-deux",
     options: [
       { id: "catholique", label: "Catholique", emoji: "✝️" },
       { id: "protestante", label: "Protestante", emoji: "✝️" },
@@ -494,7 +494,7 @@ export const BAPTEME_STEPS: QuestionStep[] = [
   },
   {
     id: "reception",
-    question: "Quel type de reception apres la ceremonie ?",
+    question: "Quel type de reception apres la cérémonie ?",
     type: "single",
     autoAdvance: true,
     options: [
@@ -506,7 +506,7 @@ export const BAPTEME_STEPS: QuestionStep[] = [
     ],
   },
   {
-    id: "lieu-bapteme",
+    id: "lieu-baptême",
     question: "Ou se fait la reception ?",
     type: "single",
     autoAdvance: true,
@@ -519,8 +519,8 @@ export const BAPTEME_STEPS: QuestionStep[] = [
     ],
   },
   {
-    id: "deco-bapteme",
-    question: "Quel style de decoration ?",
+    id: "deco-baptême",
+    question: "Quel style de décoration ?",
     type: "single",
     autoAdvance: true,
     options: [
@@ -533,12 +533,12 @@ export const BAPTEME_STEPS: QuestionStep[] = [
   },
   {
     id: "deco-level",
-    question: "Niveau de decoration ?",
+    question: "Niveau de décoration ?",
     type: "single",
     autoAdvance: true,
     options: [
       { id: "simple", label: "Quelques elements cles", emoji: "🎈" },
-      { id: "complet", label: "Decoration complete", emoji: "🎀", price: 200 },
+      { id: "complet", label: "Décoration complete", emoji: "🎀", price: 200 },
       { id: "luxe", label: "Scenographie elaboree", emoji: "🤩", price: 500 },
     ],
   },
@@ -555,8 +555,8 @@ export const BAPTEME_STEPS: QuestionStep[] = [
     ],
   },
   {
-    id: "gateau-bapteme",
-    question: "Le gateau de bapteme ?",
+    id: "gateau-baptême",
+    question: "Le gateau de baptême ?",
     type: "single",
     autoAdvance: true,
     options: [
@@ -567,13 +567,13 @@ export const BAPTEME_STEPS: QuestionStep[] = [
     ],
   },
   {
-    id: "photo-bapteme",
-    question: "Photographe pour le bapteme ?",
+    id: "photo-baptême",
+    question: "Photographe pour le baptême ?",
     type: "single",
     autoAdvance: true,
     options: [
       { id: "oui", label: "Oui, photographe pro", emoji: "📸", price: 100 },
-      { id: "ceremonie", label: "Juste la ceremonie", emoji: "📷", price: 50 },
+      { id: "cérémonie", label: "Juste la cérémonie", emoji: "📷", price: 50 },
       { id: "non", label: "Non", emoji: "❌" },
     ],
   },
@@ -604,7 +604,7 @@ export const FIANCAILLES_STEPS: QuestionStep[] = [
     autoAdvance: true,
     options: [
       { id: "surprise", label: "Demande en mariage surprise", emoji: "💍", price: 200, priceNote: "Scenographie surprise" },
-      { id: "fete", label: "Fete de fiancailles (apres la demande)", emoji: "🥂" },
+      { id: "fete", label: "Fete de fiançailles (apres la demande)", emoji: "🥂" },
       { id: "intime", label: "Diner intime en couple", emoji: "🕯️" },
     ],
   },
@@ -641,14 +641,14 @@ export const FIANCAILLES_STEPS: QuestionStep[] = [
   },
   {
     id: "deco-fianc",
-    question: "Niveau de decoration ?",
+    question: "Niveau de décoration ?",
     type: "single",
     autoAdvance: true,
     options: [
       { id: "simple", label: "Quelques touches (ballons, fleurs)", emoji: "🎈", price: 50 },
-      { id: "soigne", label: "Decoration soignee", emoji: "💐", price: 150 },
+      { id: "soigne", label: "Décoration soignee", emoji: "💐", price: 150 },
       { id: "scenographie", label: "Scenographie complete (pour la demande)", emoji: "🤩", price: 400 },
-      { id: "non", label: "Pas de decoration", emoji: "❌" },
+      { id: "non", label: "Pas de décoration", emoji: "❌" },
     ],
   },
   {
@@ -751,12 +751,12 @@ export const BABY_SHOWER_STEPS: QuestionStep[] = [
   },
   {
     id: "deco-baby",
-    question: "Decoration ?",
+    question: "Décoration ?",
     type: "single",
     autoAdvance: true,
     options: [
       { id: "simple", label: "Quelques ballons & guirlandes", emoji: "🎈", price: 40 },
-      { id: "soigne", label: "Decoration soignee au theme", emoji: "🎀", price: 100 },
+      { id: "soigne", label: "Décoration soignee au theme", emoji: "🎀", price: 100 },
       { id: "wow", label: "Scenographie complete", emoji: "🤩", price: 250 },
     ],
   },
@@ -778,11 +778,11 @@ export const BABY_SHOWER_STEPS: QuestionStep[] = [
 export const SEMINAIRE_STEPS: QuestionStep[] = [
   {
     id: "type-event",
-    question: "Quel type d'evenement professionnel ?",
+    question: "Quel type d'événement professionnel ?",
     type: "single",
     autoAdvance: true,
     options: [
-      { id: "seminaire", label: "Seminaire / Journee d'equipe", emoji: "👔" },
+      { id: "séminaire", label: "Séminaire / Journee d'equipe", emoji: "👔" },
       { id: "team-building", label: "Team building", emoji: "🤝" },
       { id: "soiree-entreprise", label: "Soiree d'entreprise", emoji: "🎉" },
       { id: "noel-ce", label: "Arbre de Noel / Fete CE", emoji: "🎄" },
@@ -829,7 +829,7 @@ export const SEMINAIRE_STEPS: QuestionStep[] = [
     autoAdvance: true,
     options: [
       { id: "entreprise", label: "Dans vos locaux", emoji: "🏢" },
-      { id: "hotel", label: "Hotel / Centre de seminaire", emoji: "🏨" },
+      { id: "hotel", label: "Hotel / Centre de séminaire", emoji: "🏨" },
       { id: "domaine", label: "Domaine / Chateau", emoji: "🏰" },
       { id: "insolite", label: "Lieu atypique", emoji: "✨" },
       { id: "recherche", label: "Proposez-nous", emoji: "🔍", price: 200 },
@@ -893,7 +893,7 @@ export const SEMINAIRE_STEPS: QuestionStep[] = [
 export const AUTRE_STEPS: QuestionStep[] = [
   {
     id: "type-autre",
-    question: "Quel evenement ?",
+    question: "Quel événement ?",
     type: "single",
     autoAdvance: true,
     options: [
@@ -939,14 +939,14 @@ export const AUTRE_STEPS: QuestionStep[] = [
   },
   {
     id: "deco-autre",
-    question: "Decoration ?",
+    question: "Décoration ?",
     type: "single",
     autoAdvance: true,
     options: [
       { id: "simple", label: "Simple", emoji: "🎈", price: 50 },
       { id: "soigne", label: "Soigne", emoji: "🎀", price: 150 },
       { id: "wow", label: "Spectaculaire", emoji: "🤩", price: 350 },
-      { id: "non", label: "Pas de decoration", emoji: "❌" },
+      { id: "non", label: "Pas de décoration", emoji: "❌" },
     ],
   },
   {
@@ -969,9 +969,9 @@ export const AUTRE_STEPS: QuestionStep[] = [
 export const EVENT_STEPS: Record<string, QuestionStep[]> = {
   mariage: MARIAGE_STEPS,
   anniversaire: ANNIVERSAIRE_STEPS,
-  bapteme: BAPTEME_STEPS,
-  fiancailles: FIANCAILLES_STEPS,
+  baptême: BAPTEME_STEPS,
+  fiançailles: FIANCAILLES_STEPS,
   "baby-shower": BABY_SHOWER_STEPS,
-  seminaire: SEMINAIRE_STEPS,
+  séminaire: SEMINAIRE_STEPS,
   autre: AUTRE_STEPS,
 };

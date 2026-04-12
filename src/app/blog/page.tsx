@@ -4,8 +4,8 @@ import { config } from "@/lib/config";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata = {
-  title: `Blog — Conseils evenementiel | ${config.brand}`,
-  description: `Conseils et inspirations pour vos evenements : mariages, baptemes, anniversaires, seminaires. Le blog ${config.brand}.`,
+  title: `Blog — Conseils événementiel | ${config.brand}`,
+  description: `Conseils et inspirations pour vos événements : mariages, baptêmes, anniversaires, séminaires. Le blog ${config.brand}.`,
 };
 
 export default async function BlogPage() {
@@ -29,7 +29,7 @@ export default async function BlogPage() {
             Conseils & <span className="text-rose-gradient">inspirations</span>
           </h1>
           <p className="text-[var(--text-light)] max-w-lg mx-auto">
-            Idees, tendances et guides pratiques pour vos evenements.
+            Idées, tendances et guides pratiques pour vos événements.
           </p>
         </div>
 
