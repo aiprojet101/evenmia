@@ -10,7 +10,10 @@
   --color-sage-light: #B5C4A5;
   --color-cream: #FBF7F2;
   --color-warm: #F0EAE2;
-  --color-gold: #C5A55A;
+  --color-gold: #D4AF37;
+  --color-gold-shine: #F5D76E;
+  --color-champagne: #F7E7CE;
+  --color-blush: #E8B4D0;
 }
 
 :root {
@@ -19,8 +22,11 @@
   --rose-dark: #9B5A3E;
   --sage: #A3B18A;
   --sage-light: #B5C4A5;
-  --gold: #C5A55A;
-  --gold-light: #D4BC7E;
+  --gold: #D4AF37;
+  --gold-light: #F5D76E;
+  --gold-shine: #FFD700;
+  --champagne: #F7E7CE;
+  --blush: #E8B4D0;
   --cream: #FBF7F2;
   --warm: #F0EAE2;
   --text: #3D3229;
@@ -44,10 +50,25 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-thumb { background: var(--rose-dark); border-radius: 3px; }
 
 .text-rose-gradient {
-  background: linear-gradient(135deg, var(--gold), var(--rose), var(--sage));
+  background: linear-gradient(135deg, var(--gold-shine), var(--rose), var(--blush));
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: shimmer 4s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+.sparkle {
+  position: absolute;
+  pointer-events: none;
+  animation: sparkle 2s ease-in-out infinite;
 }
 
 .btn-rose {

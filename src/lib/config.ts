@@ -4,7 +4,7 @@ export const config = {
   // Identite
   brand: "Evenmia",
   brandShort: "EVENMIA",
-  tagline: "Votre organisatrice d'événements sur-mesure",
+  tagline: "Décoration, faire-part & goodies sur-mesure",
   city: "Arras",
   region: "Hauts-de-France",
   department: "Pas-de-Calais",
@@ -33,14 +33,13 @@ export const config = {
   colorSage: "#9CAF88",
 } as const;
 
-// Types d'événements
+// Prestations d'Anaïs
 export const EVENT_TYPES = [
-  { id: "mariage", label: "Mariage", icon: "Heart", description: "Le plus beau jour de votre vie, organisé dans les moindres détails" },
-  { id: "fiancailles", label: "Fiançailles", icon: "Gem", description: "Une demande ou une fête de fiançailles inoubliable" },
-  { id: "anniversaire", label: "Anniversaire", icon: "Cake", description: "Fêtes d'anniversaire pour enfants et adultes" },
-  { id: "bapteme", label: "Baptême", icon: "Baby", description: "Un moment sacré célébré avec élégance" },
-  { id: "baby-shower", label: "Baby Shower", icon: "Gift", description: "Célébrez l'arrivée de bébé avec style" },
-  { id: "autre", label: "Autre événement", icon: "Sparkles", description: "Retraite, pot de départ, garden party, soirée privée..." },
+  { id: "decoration", label: "Décoration", icon: "Palette", description: "Conception et réalisation de décorations sur-mesure pour votre événement" },
+  { id: "mise-en-place", label: "Mise en place", icon: "Sparkles", description: "Installation complète de votre décoration le jour-J" },
+  { id: "faire-part", label: "Faire-part", icon: "Mail", description: "Faire-part, menus, marque-places et papeterie personnalisée" },
+  { id: "dragees", label: "Dragées", icon: "Gift", description: "Dragées faites main dans des emballages personnalisés" },
+  { id: "goodies", label: "Goodies & cadeaux invités", icon: "Heart", description: "Petits cadeaux personnalisés pour remercier vos invités" },
 ] as const;
 
 // Forfaits / Formules

@@ -19,13 +19,13 @@ const TESTIMONIALS = [
 ];
 
 const STEPS = [
-  { num: "01", title: "Racontez-moi", desc: "Répondez à quelques questions sur votre événement de rêve", icon: Heart },
-  { num: "02", title: "Je crée vos décorations", desc: "Je conçois et réalise moi-même toutes vos décorations sur-mesure", icon: Palette },
-  { num: "03", title: "Je m'occupe de tout", desc: "Organisation, coordinationion, décoration — vous profitez pleinement", icon: Sparkles },
+  { num: "01", title: "Racontez-moi", desc: "Votre événement, votre ambiance, vos envies", icon: Heart },
+  { num: "02", title: "Je conçois à la main", desc: "Décorations, faire-part, dragées, goodies — chaque détail est fait par moi", icon: Palette },
+  { num: "03", title: "Je livre & j'installe", desc: "Vous profitez, je m'occupe de tout mettre en place le jour-J", icon: Sparkles },
 ];
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
-  Heart, Gem, Cake, Baby, Gift, Building2, Sparkles,
+  Heart, Gem, Cake, Baby, Gift, Building2, Sparkles, Palette, Mail,
 };
 
 function AnimatedSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -192,7 +192,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            Vos événements
+            Décoration & créations
             <br />
             <motion.span
               className="text-rose-gradient inline-block"
@@ -200,8 +200,7 @@ export default function Home() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              sur-mesure
-            </motion.span>
+              faites main</motion.span>
           </motion.h1>
 
           <motion.p
@@ -210,9 +209,9 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
           >
-            Mariages, fiançailles, anniversaires, baptêmes, séminaires...
+            Décoration, faire-part, dragées & goodies
             <br className="hidden sm:block" />
-            Chaque moment mérite d'être <strong className="text-[var(--rose-dark)]">inoubliable</strong>.
+            Chaque événement mérite sa <strong className="text-[var(--rose-dark)]">touche unique</strong>, pensée et réalisée à la main.
           </motion.p>
 
           <motion.div
@@ -283,12 +282,12 @@ export default function Home() {
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
-            <p className="text-[var(--rose)] text-sm font-medium uppercase tracking-widest text-center mb-3">Mes spécialités</p>
+            <p className="text-[var(--rose)] text-sm font-medium uppercase tracking-widest text-center mb-3">Mes créations</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 text-[var(--text)]">
-              Chaque événement est <span className="text-rose-gradient">unique</span>
+              Chaque détail est <span className="text-rose-gradient">fait main</span>
             </h2>
             <p className="text-center text-[var(--text-light)] mb-16 max-w-lg mx-auto">
-              Particuliers ou entreprises, je donne vie à vos projets.
+              Je crée moi-même vos décorations, faire-part, dragées et goodies pour un événement qui vous ressemble.
             </p>
           </AnimatedSection>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
