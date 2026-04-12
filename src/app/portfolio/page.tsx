@@ -19,7 +19,7 @@ const PORTFOLIO_ITEMS = [
   { id: 10, title: "Sortie de ceremonie confettis", category: "mariage", description: "Les maries sous une pluie de petales et confettis.", guests: 80, image: "https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=800&h=500&fit=crop" },
 
   // ── BAPTEMES ──
-  { id: 11, title: "Sweet table bapteme pastel", category: "bapteme", description: "Table de douceurs en tons rose et blanc avec dragees.", guests: 40, image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=500&fit=crop" },
+  { id: 11, title: "Sweet table bapteme pastel", category: "bapteme", description: "Table de douceurs en tons rose et blanc avec dragees.", guests: 40, image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&h=500&fit=crop" },
   { id: 12, title: "Decoration table boheme", category: "bapteme", description: "Table decoree avec eucalyptus, bougies et tons neutres.", guests: 35, image: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&h=500&fit=crop" },
   { id: 13, title: "Gateau bapteme personnalise", category: "bapteme", description: "Gateau cake design aux couleurs du theme avec le prenom.", guests: 50, image: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=800&h=500&fit=crop" },
   { id: 14, title: "Arche de ballons", category: "bapteme", description: "Arche de ballons pastel a l'entree de la salle.", guests: 45, image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=500&fit=crop" },
@@ -38,7 +38,7 @@ const PORTFOLIO_ITEMS = [
   { id: 25, title: "Soiree gala entreprise", category: "seminaire", description: "Soiree de gala avec diner assis, discours et animations.", guests: 150, image: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&h=500&fit=crop" },
   { id: 26, title: "Workshop creatif", category: "seminaire", description: "Atelier creatif collaboratif pour stimuler l'innovation.", guests: 25, image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop" },
   { id: 27, title: "Olympiades en exterieur", category: "seminaire", description: "Jeux sportifs et defis en equipe en plein air.", guests: 60, image: "https://images.unsplash.com/photo-1472653431158-6364773b2a56?w=800&h=500&fit=crop" },
-  { id: 28, title: "Salle amenagee branding", category: "seminaire", description: "Espace personnalise aux couleurs de l'entreprise.", guests: 40, image: "https://images.unsplash.com/photo-1431540015159-0f9673be7106?w=800&h=500&fit=crop" },
+  { id: 28, title: "Salle amenagee branding", category: "seminaire", description: "Espace personnalise aux couleurs de l'entreprise.", guests: 40, image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&h=500&fit=crop" },
   { id: 29, title: "Buffet traiteur seminaire", category: "seminaire", description: "Buffet gastronomique pour la pause dejeuner.", guests: 70, image: "https://images.unsplash.com/photo-1555244162-803834f70033?w=800&h=500&fit=crop" },
   { id: 30, title: "Photo de groupe equipe", category: "seminaire", description: "Souvenir d'equipe apres une journee de seminaire reussie.", guests: 45, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=500&fit=crop" },
 
@@ -57,7 +57,7 @@ const PORTFOLIO_ITEMS = [
   // ── ANNIVERSAIRES ──
   { id: 41, title: "Fete 30 ans doree", category: "anniversaire", description: "Decoration doree et noire pour un anniversaire chic.", guests: 60, image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&h=500&fit=crop" },
   { id: 42, title: "Gateau d'anniversaire", category: "anniversaire", description: "Gateau spectaculaire avec bougies et decoration sur-mesure.", guests: 40, image: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=800&h=500&fit=crop" },
-  { id: 43, title: "Fete enfant chateau gonflable", category: "anniversaire", description: "Anniversaire enfant avec jeux, ballons et animations.", guests: 20, image: "https://images.unsplash.com/photo-1464349153159-4e5e1927e836?w=800&h=500&fit=crop" },
+  { id: 43, title: "Fete enfant chateau gonflable", category: "anniversaire", description: "Anniversaire enfant avec jeux, ballons et animations.", guests: 20, image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=500&fit=crop" },
   { id: 44, title: "Soiree DJ et dancefloor", category: "anniversaire", description: "Piste de danse avec DJ et jeux de lumieres.", guests: 80, image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=500&fit=crop" },
   { id: 45, title: "Garden party anniversaire", category: "anniversaire", description: "Fete en plein air avec buffet, guirlandes et jeux.", guests: 50, image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=500&fit=crop" },
   { id: 46, title: "Bar a cocktails anime", category: "anniversaire", description: "Barman professionnel preparant des cocktails personnalises.", guests: 45, image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&h=500&fit=crop" },
@@ -67,7 +67,7 @@ const PORTFOLIO_ITEMS = [
   { id: 50, title: "Fete surprise decoration", category: "anniversaire", description: "Salle decoree pour une fete surprise inoubliable.", guests: 40, image: "https://images.unsplash.com/photo-1496843916299-590492c751f4?w=800&h=500&fit=crop" },
 
   // ── BABY SHOWERS ──
-  { id: 51, title: "Sweet table rose et doree", category: "baby-shower", description: "Bar a douceurs en rose et or avec cupcakes et cookies.", guests: 20, image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=500&fit=crop" },
+  { id: 51, title: "Sweet table rose et doree", category: "baby-shower", description: "Bar a douceurs en rose et or avec cupcakes et cookies.", guests: 20, image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&h=500&fit=crop" },
   { id: 52, title: "Ballons gender reveal", category: "baby-shower", description: "Ballons roses et bleus pour la revelation du sexe de bebe.", guests: 25, image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=500&fit=crop" },
   { id: 53, title: "Decoration nuages et etoiles", category: "baby-shower", description: "Theme celeste avec nuages en coton et etoiles dorees.", guests: 15, image: "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&h=500&fit=crop" },
   { id: 54, title: "Brunch baby shower", category: "baby-shower", description: "Brunch gourmand entre amies avec patisseries et jus frais.", guests: 12, image: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=800&h=500&fit=crop" },
@@ -75,7 +75,7 @@ const PORTFOLIO_ITEMS = [
   { id: 56, title: "Jeux baby shower", category: "baby-shower", description: "Animations et jeux entre amies pour celebrer la future maman.", guests: 18, image: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=800&h=500&fit=crop" },
   { id: 57, title: "Cadeaux et ouverture", category: "baby-shower", description: "Moment d'ouverture des cadeaux avec la future maman.", guests: 15, image: "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=800&h=500&fit=crop" },
   { id: 58, title: "Gateau baby shower", category: "baby-shower", description: "Gateau pastel decore avec des motifs bebe.", guests: 20, image: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=800&h=500&fit=crop" },
-  { id: 59, title: "Decoration boheme bebe", category: "baby-shower", description: "Ambiance boheme avec pampa, macrame et tons neutres.", guests: 22, image: "https://images.unsplash.com/photo-1464349153159-4e5e1927e836?w=800&h=500&fit=crop" },
+  { id: 59, title: "Decoration boheme bebe", category: "baby-shower", description: "Ambiance boheme avec pampa, macrame et tons neutres.", guests: 22, image: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&h=500&fit=crop" },
   { id: 60, title: "Coin photo baby shower", category: "baby-shower", description: "Backdrop decore pour des photos souvenirs entre amies.", guests: 16, image: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&h=500&fit=crop" },
 ];
 
