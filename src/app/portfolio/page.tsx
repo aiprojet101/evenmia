@@ -27,33 +27,23 @@ const PORTFOLIO_ITEMS = [
   { id: 10, title: "Sortie de cérémonie — confettis", category: "mariage", description: "Les mariés sous une pluie de pétales et confettis.", guests: 80, image: "https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=800&h=500&fit=crop" },
 
   // ── BAPTÊMES ──
-  { id: 12, title: "Décoration table bohème", category: "bapteme", description: "Table décorée avec eucalyptus, bougies et tons neutres.", guests: 35, image: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&h=500&fit=crop" },
-  { id: 13, title: "Gâteau baptême personnalisé", category: "bapteme", description: "Gâteau cake design aux couleurs du thème avec le prénom.", guests: 50, image: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=800&h=500&fit=crop" },
   { id: 14, title: "Arche de ballons", category: "bapteme", description: "Arche de ballons pastel à l'entrée de la salle.", guests: 45, image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=500&fit=crop" },
   { id: 16, title: "Réception jardin baptême", category: "bapteme", description: "Réception en plein air avec nappes blanches et fleurs.", guests: 55, image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=500&fit=crop" },
   { id: 18, title: "Décoration florale douce", category: "bapteme", description: "Compositions florales pastel avec pivoines et hortensias.", guests: 60, image: "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=800&h=500&fit=crop" },
 
   // ── FIANÇAILLES ──
-  { id: 33, title: "Fête de fiançailles chic", category: "fiancailles", description: "Soirée entre proches avec décoration élégante et champagne.", guests: 30, image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=500&fit=crop" },
   { id: 34, title: "Champagne et célébration", category: "fiancailles", description: "Toast au champagne entre amis pour célébrer la nouvelle.", guests: 20, image: "https://images.unsplash.com/photo-1470338745628-171cf53de3a8?w=800&h=500&fit=crop" },
-  { id: 36, title: "Brunch de fiançailles", category: "fiancailles", description: "Brunch convivial du lendemain avec les familles.", guests: 15, image: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=800&h=500&fit=crop" },
   { id: 37, title: "Photoshoot couple", category: "fiancailles", description: "Séance photo en couple pour immortaliser le moment.", guests: 2, image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&h=500&fit=crop" },
-  { id: 39, title: "Gâteau de fiançailles", category: "fiancailles", description: "Gâteau personnalisé avec les prénoms des fiancés.", guests: 25, image: "https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=800&h=500&fit=crop" },
   { id: 40, title: "Décoration guirlandes lumineuses", category: "fiancailles", description: "Jardin illuminé de guirlandes pour une soirée magique.", guests: 35, image: "https://images.unsplash.com/photo-1464047736614-af63643285bf?w=800&h=500&fit=crop" },
 
   // ── ANNIVERSAIRES ──
   { id: 42, title: "Gâteau d'anniversaire", category: "anniversaire", description: "Gâteau spectaculaire avec bougies et décoration sur-mesure.", guests: 40, image: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=800&h=500&fit=crop" },
-  { id: 43, title: "Fête enfant — ballons & animations", category: "anniversaire", description: "Anniversaire enfant avec jeux, ballons et animations.", guests: 20, image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=500&fit=crop" },
-  { id: 45, title: "Garden party anniversaire", category: "anniversaire", description: "Fête en plein air avec buffet, guirlandes et jeux.", guests: 50, image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=500&fit=crop" },
   { id: 46, title: "Bar à cocktails animé", category: "anniversaire", description: "Barman professionnel préparant des cocktails personnalisés.", guests: 45, image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&h=500&fit=crop" },
   { id: 50, title: "Fête surprise décoration", category: "anniversaire", description: "Salle décorée pour une fête surprise inoubliable.", guests: 40, image: "https://images.unsplash.com/photo-1496843916299-590492c751f4?w=800&h=500&fit=crop" },
 
   // ── BABY SHOWERS ──
-  { id: 52, title: "Ballons gender reveal", category: "baby-shower", description: "Ballons roses et bleus pour la révélation du sexe de bébé.", guests: 25, image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=500&fit=crop" },
   { id: 54, title: "Brunch baby shower", category: "baby-shower", description: "Brunch gourmand entre amies avec pâtisseries et jus frais.", guests: 12, image: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=800&h=500&fit=crop" },
-  { id: 55, title: "Arbre à vœux bébé", category: "baby-shower", description: "Arbre où chaque invitée accroche un vœu pour bébé.", guests: 20, image: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&h=500&fit=crop" },
   { id: 57, title: "Cadeaux et ouverture", category: "baby-shower", description: "Moment d'ouverture des cadeaux avec la future maman.", guests: 15, image: "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=800&h=500&fit=crop" },
-  { id: 58, title: "Gâteau baby shower", category: "baby-shower", description: "Gâteau pastel décoré avec des motifs bébé.", guests: 20, image: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=800&h=500&fit=crop" },
   { id: 59, title: "Décoration bohème bébé", category: "baby-shower", description: "Ambiance bohème avec pampa, macramé et tons neutres.", guests: 22, image: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&h=500&fit=crop" },
 ];
 
