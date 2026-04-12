@@ -8,7 +8,7 @@ import {
   ArrowRight, Phone, Star, ChevronRight, Check,
   Mail, MapPin, Palette, X, PartyPopper, Menu,
 } from "lucide-react";
-import { config, EVENT_TYPES, FORMULAS, SERVICES } from "@/lib/config";
+import { config, EVENT_TYPES, FORMULAS, SERVICES, PRESTATIONS } from "@/lib/config";
 import DevisPopup from "@/components/DevisPopup";
 
 const TESTIMONIALS = [
@@ -282,34 +282,34 @@ export default function Home() {
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
-            <p className="text-[var(--rose)] text-sm font-medium uppercase tracking-widest text-center mb-3">Mes créations</p>
+            <p className="text-[var(--rose)] text-sm font-medium uppercase tracking-widest text-center mb-3">Mes prestations</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 text-[var(--text)]">
-              Chaque détail est <span className="text-rose-gradient">fait main</span>
+              Tout est <span className="text-rose-gradient">fait main</span>
             </h2>
-            <p className="text-center text-[var(--text-light)] mb-16 max-w-lg mx-auto">
-              Je crée moi-même vos décorations, faire-part, dragées et goodies pour un événement qui vous ressemble.
+            <p className="text-center text-[var(--text-light)] mb-16 max-w-xl mx-auto">
+              Décoration sur-mesure, mise en place, papeterie, dragées et goodies — je conçois et réalise chaque détail de votre événement avec passion.
             </p>
           </AnimatedSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {EVENT_TYPES.slice(0, 8).map((evt, i) => {
-              const Icon = ICON_MAP[evt.icon] || Sparkles;
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {PRESTATIONS.map((p, i) => {
+              const Icon = ICON_MAP[p.icon] || Sparkles;
               return (
-                <AnimatedCard key={evt.id} index={i}>
+                <AnimatedCard key={p.id} index={i}>
                   <motion.button
-                    onClick={() => openDevis(evt.id)}
-                    whileHover={{ y: -6, boxShadow: "0 12px 30px rgba(212,165,116,0.15)" }}
+                    onClick={() => openDevis()}
+                    whileHover={{ y: -6, boxShadow: "0 12px 30px rgba(212,175,55,0.2)" }}
                     whileTap={{ scale: 0.97 }}
-                    className="w-full text-left card-light p-6 hover:bg-white transition-all duration-300"
+                    className="w-full text-left card-light p-6 hover:bg-white transition-all duration-300 h-full"
                   >
                     <motion.div
-                      className="w-12 h-12 mb-4 rounded-xl bg-[var(--rose)]/10 flex items-center justify-center"
+                      className="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-[var(--gold-light)]/30 to-[var(--rose)]/10 flex items-center justify-center"
                       whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
                       transition={{ duration: 0.5 }}
                     >
-                      <Icon className="w-5 h-5 text-[var(--rose)]" />
+                      <Icon className="w-6 h-6 text-[var(--rose)]" />
                     </motion.div>
-                    <h3 className="font-semibold mb-1.5 text-[var(--text)]">{evt.label}</h3>
-                    <p className="text-sm text-[var(--text-light)] leading-relaxed">{evt.description}</p>
+                    <h3 className="font-bold mb-2 text-[var(--text)] text-lg">{p.label}</h3>
+                    <p className="text-sm text-[var(--text-light)] leading-relaxed">{p.description}</p>
                   </motion.button>
                 </AnimatedCard>
               );

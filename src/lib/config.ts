@@ -33,13 +33,23 @@ export const config = {
   colorSage: "#9CAF88",
 } as const;
 
-// Prestations d'Anaïs
+// Types d'événements (première question du devis)
 export const EVENT_TYPES = [
-  { id: "decoration", label: "Décoration", icon: "Palette", description: "Conception et réalisation de décorations sur-mesure pour votre événement" },
-  { id: "mise-en-place", label: "Mise en place", icon: "Sparkles", description: "Installation complète de votre décoration le jour-J" },
-  { id: "faire-part", label: "Faire-part", icon: "Mail", description: "Faire-part, menus, marque-places et papeterie personnalisée" },
-  { id: "dragees", label: "Dragées", icon: "Gift", description: "Dragées faites main dans des emballages personnalisés" },
-  { id: "goodies", label: "Goodies & cadeaux invités", icon: "Heart", description: "Petits cadeaux personnalisés pour remercier vos invités" },
+  { id: "mariage", label: "Mariage", icon: "Heart", description: "Le plus beau jour de votre vie, sublimé par une décoration sur-mesure" },
+  { id: "fiancailles", label: "Fiançailles", icon: "Gem", description: "Une demande ou une fête de fiançailles inoubliable" },
+  { id: "anniversaire", label: "Anniversaire", icon: "Cake", description: "Fêtes d'anniversaire pour enfants et adultes" },
+  { id: "bapteme", label: "Baptême", icon: "Baby", description: "Un moment sacré célébré avec élégance" },
+  { id: "baby-shower", label: "Baby Shower", icon: "Gift", description: "Célébrez l'arrivée de bébé avec style" },
+  { id: "autre", label: "Autre événement", icon: "Sparkles", description: "Retraite, pot de départ, garden party, soirée privée..." },
+] as const;
+
+// Prestations d'Anaïs (section page d'accueil)
+export const PRESTATIONS = [
+  { id: "decoration", label: "Décoration", icon: "Palette", description: "Arches de ballons, centres de table, back-drop, sweet table, mur de fleurs... Je conçois et réalise votre décoration sur-mesure." },
+  { id: "mise-en-place", label: "Mise en place", icon: "Sparkles", description: "Livraison, montage, dressage, installation — je m'occupe de tout le jour-J pour que vous profitiez pleinement." },
+  { id: "faire-part", label: "Faire-part & papeterie", icon: "Mail", description: "Save the date, faire-part, menus, marque-places... créés à la main avec finitions dorure, gaufrage, cire." },
+  { id: "dragees", label: "Dragées", icon: "Gift", description: "Dragées parfumées dans des emballages personnalisés : boîtes, sachets organza, pots en verre, cornets en tissu." },
+  { id: "goodies", label: "Goodies invités", icon: "Heart", description: "Bougies, savons, chocolats, mini bouteilles, photos polaroïd... des cadeaux personnalisés pour vos invités." },
 ] as const;
 
 // Forfaits / Formules
