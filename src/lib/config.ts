@@ -33,15 +33,14 @@ export const config = {
   colorSage: "#9CAF88",
 } as const;
 
-// Types d'evenements
+// Types d'événements
 export const EVENT_TYPES = [
-  { id: "mariage", label: "Mariage", icon: "Heart", description: "Le plus beau jour de votre vie, organise dans les moindres details" },
-  { id: "fiancailles", label: "Fiancailles", icon: "Gem", description: "Une demande ou une fete de fiancailles inoubliable" },
-  { id: "anniversaire", label: "Anniversaire", icon: "Cake", description: "Fetes d'anniversaire pour enfants et adultes" },
-  { id: "bapteme", label: "Bapteme", icon: "Baby", description: "Un moment sacre celebre avec elegance" },
-  { id: "baby-shower", label: "Baby Shower", icon: "Gift", description: "Celebrez l'arrivee de bebe avec style" },
-  { id: "seminaire", label: "Seminaire / CE", icon: "Building2", description: "Evenements d'entreprise, team building, comites d'entreprise" },
-  { id: "autre", label: "Autre evenement", icon: "Sparkles", description: "Retraite, pot de depart, garden party, soiree privee..." },
+  { id: "mariage", label: "Mariage", icon: "Heart", description: "Le plus beau jour de votre vie, organisé dans les moindres détails" },
+  { id: "fiancailles", label: "Fiançailles", icon: "Gem", description: "Une demande ou une fête de fiançailles inoubliable" },
+  { id: "anniversaire", label: "Anniversaire", icon: "Cake", description: "Fêtes d'anniversaire pour enfants et adultes" },
+  { id: "bapteme", label: "Baptême", icon: "Baby", description: "Un moment sacré célébré avec élégance" },
+  { id: "baby-shower", label: "Baby Shower", icon: "Gift", description: "Célébrez l'arrivée de bébé avec style" },
+  { id: "autre", label: "Autre événement", icon: "Sparkles", description: "Retraite, pot de départ, garden party, soirée privée..." },
 ] as const;
 
 // Forfaits / Formules

@@ -413,13 +413,56 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Galerie decorations faites main */}
+      <section className="py-24 px-6 relative">
+        <div className="max-w-6xl mx-auto">
+          <AnimatedSection>
+            <p className="text-[var(--rose)] text-sm font-medium uppercase tracking-widest text-center mb-3">Faites main par Anaïs</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 text-[var(--text)]">
+              Mes <span className="text-rose-gradient">créations</span>
+            </h2>
+            <p className="text-center text-[var(--text-light)] mb-16 max-w-xl mx-auto">
+              Chaque décoration est imaginée, conçue et réalisée à la main, spécialement pour votre événement. De la dragée au centre de table, rien n'est laissé au hasard.
+            </p>
+          </AnimatedSection>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[
+              { src: "/anais-decorations/anniversaire-louis.png", title: "Anniversaire Louis", category: "Anniversaire" },
+              { src: "/anais-decorations/anniversaire-louna-gateau.png", title: "Gâteau de Louna", category: "Anniversaire" },
+              { src: "/anais-decorations/anniversaire-louna-nature.png", title: "Déco nature & bois — Louna", category: "Anniversaire" },
+              { src: "/anais-decorations/baby-shower-sophie-hugue.png", title: "Baby Shower de Sophie & Hugues", category: "Baby Shower" },
+              { src: "/anais-decorations/bapteme-louis.png", title: "Baptême de Louis", category: "Baptême" },
+              { src: "/anais-decorations/dragees-bapteme-louis.png", title: "Dragées — Baptême Louis", category: "Confection" },
+              { src: "/anais-decorations/table-bougies-mauve.png", title: "Table aux bougies mauves", category: "Réception" },
+            ].map((item, i) => (
+              <AnimatedCard key={item.src} index={i}>
+                <motion.div whileHover={{ y: -6, scale: 1.02 }} className="card-light overflow-hidden group cursor-pointer">
+                  <div className="aspect-square overflow-hidden bg-[var(--warm)]">
+                    <img src={item.src} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+                  </div>
+                  <div className="p-3">
+                    <p className="text-[10px] uppercase tracking-wider text-[var(--rose)] font-medium">{item.category}</p>
+                    <p className="text-sm font-medium text-[var(--text)] leading-tight mt-1">{item.title}</p>
+                  </div>
+                </motion.div>
+              </AnimatedCard>
+            ))}
+          </div>
+          <AnimatedSection className="text-center mt-12">
+            <Link href="/portfolio" className="btn-outline inline-flex items-center gap-2">
+              Voir toutes mes réalisations <ArrowRight className="w-4 h-4" />
+            </Link>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
-            <p className="text-[var(--rose)] text-sm font-medium uppercase tracking-widest text-center mb-3">Temoignages</p>
+            <p className="text-[var(--rose)] text-sm font-medium uppercase tracking-widest text-center mb-3">Témoignages</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16 text-[var(--text)]">
-              Ils nous font <span className="text-rose-gradient">confiance</span>
+              Ils me font <span className="text-rose-gradient">confiance</span>
             </h2>
           </AnimatedSection>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
