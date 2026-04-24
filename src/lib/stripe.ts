@@ -1,0 +1,6 @@
+// Helper Stripe — instancié uniquement si la clé est présente
+import Stripe from "stripe";
+
+const key = process.env.STRIPE_SECRET_KEY;
+export const stripe: Stripe | null = key ? new Stripe(key) : null;
+export const stripeConfigured = !!key;

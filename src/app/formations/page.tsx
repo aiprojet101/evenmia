@@ -498,14 +498,25 @@ export default function FormationsPage() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={`mailto:${"contact@evenmia.fr"}?subject=Inscription%20${o.name}&body=Bonjour,%20je%20souhaite%20m%27inscrire%20%C3%A0%20l%27offre%20${o.name}.`}
-                  className={`text-center py-3.5 rounded-full font-semibold text-sm transition ${
+                <button
+                  onClick={async () => {
+                    const email = prompt("Votre email pour la formation :");
+                    if (!email) return;
+                    const res = await fetch("/api/stripe/formation-checkout", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ offerId: o.id, email }),
+                    });
+                    const data = await res.json();
+                    if (data.url) window.location.href = data.url;
+                    else alert(data.error || "Erreur — veuillez nous contacter à contact@evenmia.fr");
+                  }}
+                  className={`text-center py-3.5 rounded-full font-semibold text-sm transition w-full ${
                     o.popular ? "btn-rose" : "btn-outline"
                   }`}
                 >
                   {o.cta}
-                </a>
+                </button>
               </motion.div>
             ))}
           </div>
