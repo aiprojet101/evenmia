@@ -6,7 +6,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Heart, Gem, Cake, Baby, Gift, Building2, Sparkles,
   ArrowRight, Phone, Star, ChevronRight, Check,
-  Mail, MapPin, Palette, X, PartyPopper, Menu,
+  Mail, MapPin, Palette, X, PartyPopper, Menu, UtensilsCrossed,
 } from "lucide-react";
 import { config, EVENT_TYPES, FORMULAS, SERVICES, PRESTATIONS } from "@/lib/config";
 import DevisPopup from "@/components/DevisPopup";
@@ -19,13 +19,13 @@ const TESTIMONIALS = [
 ];
 
 const STEPS = [
-  { num: "01", title: "Racontez-moi", desc: "Votre événement, votre ambiance, vos envies", icon: Heart },
-  { num: "02", title: "Je conçois à la main", desc: "Décorations, faire-part, dragées, goodies — chaque détail est fait par moi", icon: Palette },
-  { num: "03", title: "Je livre & j'installe", desc: "Vous profitez, je m'occupe de tout mettre en place le jour-J", icon: Sparkles },
+  { num: "01", title: "Vous remplissez le questionnaire", desc: "Vous me dites tout : événement, ambiance, éléments souhaités", icon: Heart },
+  { num: "02", title: "Je prépare votre commande", desc: "Décoration, vaisselle, faire-part, dragées, goodies — tout est prêt", icon: Palette },
+  { num: "03", title: "Le jour-J, j'installe tout", desc: "Je viens, je mets en place ce que vous avez choisi, je repars. Vous profitez.", icon: Sparkles },
 ];
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
-  Heart, Gem, Cake, Baby, Gift, Building2, Sparkles, Palette, Mail,
+  Heart, Gem, Cake, Baby, Gift, Building2, Sparkles, Palette, Mail, UtensilsCrossed,
 };
 
 function AnimatedSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {

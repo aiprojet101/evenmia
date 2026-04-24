@@ -43,7 +43,8 @@ const COMMON_START: QuestionStep[] = [
     required: true,
     options: [
       { id: "decoration", label: "Décoration complète", emoji: "🎨" },
-      { id: "mise-en-place", label: "Mise en place / Installation", emoji: "✨" },
+      { id: "mise-en-place", label: "Mise en place le jour-J", emoji: "✨" },
+      { id: "vaisselle", label: "Vaisselle jetable décorative", emoji: "🍽️" },
       { id: "faire-part", label: "Faire-part & papeterie", emoji: "💌" },
       { id: "dragees", label: "Dragées", emoji: "🍬" },
       { id: "goodies", label: "Goodies & cadeaux invités", emoji: "🎁" },
@@ -333,6 +334,52 @@ const GOODIES_STEPS: QuestionStep[] = [
 ];
 
 // =============================================================================
+// VAISSELLE JETABLE DÉCORATIVE
+// =============================================================================
+
+const VAISSELLE_STEPS: QuestionStep[] = [
+  {
+    id: "vaisselle_elements",
+    question: "Quels éléments de vaisselle ?",
+    subtitle: "Cochez ce qui vous intéresse",
+    type: "multi",
+    showIf: (a) => hasPresta(a, "vaisselle"),
+    options: [
+      { id: "assiettes", label: "Assiettes (plates + creuses)", emoji: "🍽️" },
+      { id: "serviettes", label: "Serviettes en papier", emoji: "🧻" },
+      { id: "gobelets", label: "Gobelets / verres", emoji: "🥤" },
+      { id: "couverts", label: "Couverts (fourchettes, couteaux, cuillères)", emoji: "🍴" },
+      { id: "nappe", label: "Nappe jetable", emoji: "📋" },
+      { id: "pailles", label: "Pailles décoratives", emoji: "🥤" },
+      { id: "ballons-gonflables", label: "Ballons gonflables", emoji: "🎈" },
+      { id: "pack-complet", label: "Pack complet (tout inclus)", emoji: "📦" },
+    ],
+  },
+  {
+    id: "vaisselle_theme",
+    question: "Quel thème de vaisselle ?",
+    subtitle: "Pour harmoniser avec votre événement",
+    type: "single",
+    autoAdvance: true,
+    showIf: (a) => hasPresta(a, "vaisselle"),
+    options: [
+      { id: "princesse", label: "Princesse / Fée", emoji: "👸" },
+      { id: "super-heros", label: "Super-héros", emoji: "🦸" },
+      { id: "safari", label: "Safari / Jungle", emoji: "🦁" },
+      { id: "licorne", label: "Licorne / Arc-en-ciel", emoji: "🦄" },
+      { id: "pirate", label: "Pirates / Aventure", emoji: "🏴‍☠️" },
+      { id: "bapteme", label: "Baptême (doux, pastel)", emoji: "👶" },
+      { id: "mariage", label: "Mariage (chic, doré)", emoji: "💍" },
+      { id: "baby-bleu", label: "Baby shower bleu", emoji: "💙" },
+      { id: "baby-rose", label: "Baby shower rose", emoji: "💗" },
+      { id: "noir-dore", label: "Noir & doré (chic)", emoji: "🖤" },
+      { id: "blanc-or", label: "Blanc & or (élégant)", emoji: "✨" },
+      { id: "autre-theme", label: "Autre thème (à définir)", emoji: "🎨" },
+    ],
+  },
+];
+
+// =============================================================================
 // EVENT_STEPS : même parcours pour tous les types (les showIf filtrent)
 // =============================================================================
 
@@ -340,6 +387,7 @@ const ALL_STEPS = [
   ...COMMON_START,
   ...DECO_STEPS,
   ...MISE_EN_PLACE_STEPS,
+  ...VAISSELLE_STEPS,
   ...FAIRE_PART_STEPS,
   ...DRAGEES_STEPS,
   ...GOODIES_STEPS,

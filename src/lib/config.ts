@@ -45,8 +45,9 @@ export const EVENT_TYPES = [
 
 // Prestations d'Anaïs (section page d'accueil)
 export const PRESTATIONS = [
-  { id: "decoration", label: "Décoration", icon: "Palette", description: "Arches de ballons, centres de table, back-drop, sweet table, mur de fleurs... Je conçois et réalise votre décoration sur-mesure." },
-  { id: "mise-en-place", label: "Mise en place", icon: "Sparkles", description: "Livraison, montage, dressage, installation — je m'occupe de tout le jour-J pour que vous profitiez pleinement." },
+  { id: "decoration", label: "Décoration", icon: "Palette", description: "Arches de ballons, centres de table, back-drop, sweet table, mur de fleurs... Je conçois votre décoration sur-mesure." },
+  { id: "mise-en-place", label: "Mise en place le jour-J", icon: "Sparkles", description: "Je viens, j'installe tout ce que vous avez choisi, je repars. Vous profitez pleinement de votre événement." },
+  { id: "vaisselle", label: "Vaisselle jetable décorative", icon: "UtensilsCrossed", description: "Assiettes, serviettes, gobelets, couverts assortis au thème : princesse, safari, baptême, mariage, baby..." },
   { id: "faire-part", label: "Faire-part & papeterie", icon: "Mail", description: "Save the date, faire-part, menus, marque-places... créés à la main avec finitions dorure, gaufrage, cire." },
   { id: "dragees", label: "Dragées", icon: "Gift", description: "Dragées parfumées dans des emballages personnalisés : boîtes, sachets organza, pots en verre, cornets en tissu." },
   { id: "goodies", label: "Goodies invités", icon: "Heart", description: "Bougies, savons, chocolats, mini bouteilles, photos polaroïd... des cadeaux personnalisés pour vos invités." },
