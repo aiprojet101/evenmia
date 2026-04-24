@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Clock, Tag } from "lucide-react";
 import { config } from "@/lib/config";
 import { getAllPosts } from "@/lib/blog";
+import NewsletterForm from "@/components/NewsletterForm";
+import NewsletterPopup from "@/components/NewsletterPopup";
 
 export const metadata = {
   title: `Blog — Conseils événementiel | ${config.brand}`,
@@ -63,7 +65,12 @@ export default async function BlogPage() {
             ))}
           </div>
         )}
+
+        <div className="mt-16">
+          <NewsletterForm />
+        </div>
       </div>
+      <NewsletterPopup />
     </div>
   );
 }

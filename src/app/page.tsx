@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { config, EVENT_TYPES, FORMULAS, SERVICES, PRESTATIONS } from "@/lib/config";
 import DevisPopup from "@/components/DevisPopup";
+import NewsletterForm from "@/components/NewsletterForm";
 
 const TESTIMONIALS = [
   { name: "Sophie L.", text: "Anaïs a transformé notre mariage en un rêve éveillé. Chaque détail était parfait, du premier rendez-vous jusqu'à la dernière danse.", stars: 5, tag: "Mariage", initials: "SL" },
@@ -528,6 +529,13 @@ export default function Home() {
               <ArrowRight className="w-5 h-5" />
             </motion.span>
           </motion.button>
+        </AnimatedSection>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-20 px-6 bg-white border-t border-[var(--border)]">
+        <AnimatedSection className="max-w-xl mx-auto">
+          <NewsletterForm />
         </AnimatedSection>
       </section>
 

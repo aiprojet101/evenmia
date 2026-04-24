@@ -3,6 +3,8 @@ import { ArrowLeft, Clock, Tag, ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { config } from "@/lib/config";
 import { getPostBySlug, getAllPosts } from "@/lib/blog";
+import NewsletterForm from "@/components/NewsletterForm";
+import NewsletterPopup from "@/components/NewsletterPopup";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -92,7 +94,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             Demander un devis <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
+
+        {/* Newsletter */}
+        <div className="mt-12">
+          <NewsletterForm />
+        </div>
       </article>
+      <NewsletterPopup />
     </div>
   );
 }
